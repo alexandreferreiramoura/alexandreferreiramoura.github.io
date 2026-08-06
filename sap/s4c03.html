@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S4C03 — Implementação S/4HANA · Alexandre Ferreira Moura</title>
+<title>S4C03 — Implementação S/4HANA Cloud Private Edition · Alexandre Ferreira Moura</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -10,42 +10,30 @@
 :root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
 --sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--mono:'IBM Plex Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;font-size:15.5px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+body{font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px}
 a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
+a:focus-visible{outline:3px solid var(--sys);outline-offset:3px;border-radius:4px}
 .topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
 .topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
-.pagehead{padding:44px 0 34px;border-bottom:1px solid var(--line);background:var(--paper)}
+.pagehead{padding:48px 0 38px;border-bottom:1px solid var(--line);background:var(--paper)}
 .pagehead .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sys);margin-bottom:10px}
 .pagehead h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.015em;line-height:1.15}
-.pagehead .sub{color:var(--ink-soft);margin-top:8px;font-size:.95rem}
-article{padding:44px 0 70px}
-article h1{display:none}
-article h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:46px 0 16px;padding-top:22px;border-top:1px solid var(--line)}
-article h2:first-child{margin-top:0;border-top:none;padding-top:0}
-article h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:30px 0 10px}
-article h4{font-weight:600;font-size:.95rem;margin:22px 0 8px}
-article p{margin-bottom:14px}
-article ul,article ol{margin:0 0 16px 22px}
-article li{margin-bottom:6px}
-article strong{font-weight:600}
-article em{color:var(--ink-soft)}
-article hr{border:none;border-top:1px solid var(--line);margin:36px 0}
-article blockquote{border-left:3px solid var(--ops);background:var(--paper);padding:12px 18px;margin:0 0 16px;color:var(--ink-soft);border-radius:0 8px 8px 0}
-article code{font-family:var(--mono);font-size:.83em;background:var(--sys-soft);color:#094F9E;padding:2px 6px;border-radius:4px}
-article pre{background:#0F1C2B;color:#D8E4F0;padding:18px 20px;border-radius:10px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.6}
-article pre code{background:none;color:inherit;padding:0}
-article table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem;background:var(--paper);border-radius:8px;overflow:hidden}
-article th{background:var(--ink);color:#fff;text-align:left;padding:10px 14px;font-weight:600;font-size:.82rem}
-article td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-article tr:last-child td{border-bottom:none}
-.tablewrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:8px}
-.tablewrap table{margin:0;border-radius:0}
-footer{border-top:1px solid var(--line);padding:34px 0 60px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
-@media(max-width:640px){article table{font-size:.8rem}}
+.pagehead .sub{color:var(--ink-soft);margin-top:8px;font-size:.95rem;font-family:var(--mono)}
+article{padding:46px 0 70px}
+.intro{font-size:1.02rem;color:var(--ink-soft);margin-bottom:40px;max-width:640px}
+h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em;margin:0 0 18px}
+section+section{margin-top:44px}
+ul{list-style:none}
+ul.fez li{position:relative;padding:0 0 14px 30px}
+ul.fez li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--sys)}
+ul.apr li{position:relative;padding:0 0 14px 30px;color:var(--ink-soft)}
+ul.apr li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:2px;background:var(--ops)}
+.navdocs{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.8rem}
+footer{border-top:1px solid var(--line);padding:30px 0 60px}
+footer .wrap{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -54,423 +42,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
 </div></div>
 <div class="pagehead"><div class="wrap">
-  <p class="eyebrow">Prática hands-on · SAP S/4HANA 2025 · Trilha C_TS462</p>
-  <h1>S4C03 — Implementação S/4HANA</h1>
-  <p class="sub">5 exercícios · Clean core, custom fields e migração de dados</p>
+  <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <h1>S4C03 — Implementação S/4HANA Cloud Private Edition</h1>
+  <p class="sub">5 exercícios · Clean core, extensibilidade e migração de dados</p>
 </div></div>
 <article><div class="wrap">
-<h1>S4C03 — Implementing SAP S/4HANA Cloud Private Edition for Consultants</h1>
-<h2>Banco de Aprendizado — Prática Hands-on (SAP S/4HANA 2025)</h2>
-<p><strong>Aluno:</strong> Alexandre Ferreira Moura
-<strong>Sistema de prática:</strong> ambiente de treinamento SAP S/4HANA 2025 (SAP Learning Hub), Client 400
-<strong>Login usado:</strong> usuário de treinamento (grupo 61)
-<strong>Grupo (##):</strong> 61
-<strong>Course Version:</strong> 26
-<strong>Trilha:</strong> C_TS462 — SAP Certified Associate, SAP S/4HANA Cloud Private Edition, Sales (item complementar de trilha, fora dos 15 itens SD)
-<strong>Status:</strong> ✅ Concluído — 5 exercícios / Unit 1 única (~1h25 previsto)
-<strong>Data da prática:</strong> 04/08/2026
-<strong>Prazo de acesso ao sistema:</strong> 18/08/2026 (grupo atualizado de 88 → 61 nesta sessão)</p>
-<hr />
-<h2>📌 Objetos-chave criados nesta prática</h2>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Objeto</th>
-<th>Código/Valor</th>
-<th>Descrição / Resultado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Usuário criado (Ex.1)</td>
-<td><code>S4C_USER_61</code></td>
-<td>Roles: <code>Z_FIORI_FOUNDATION_USER</code>, <code>Z_BR_S4C03_USER_ROLE</code>, <code>Z_S4C02</code></td>
-</tr>
-<tr>
-<td>Company (Ex.2)</td>
-<td><code>S4C-61</code></td>
-<td>Test Company S4C-61 — Newtown Square, US, EN, USD</td>
-</tr>
-<tr>
-<td>Customizing Request (Ex.2)</td>
-<td>System Exercise_61</td>
-<td>Transporte gerado ao salvar Define Company</td>
-</tr>
-<tr>
-<td>Custom Field (Ex.4)</td>
-<td><code>ZZ1_CustomFieldS4C61</code></td>
-<td>Label "Custom Field S4C-61", Business Context Bank Account Master Data, Text(20)</td>
-</tr>
-<tr>
-<td>Projeto de migração (Ex.5)</td>
-<td><code>Migrate Data Bank 61</code></td>
-<td>Migration Approach: Staging Tables, Local Package</td>
-</tr>
-<tr>
-<td>Registros migrados (Ex.5)</td>
-<td><code>960161</code>, <code>960261</code>, <code>960361</code></td>
-<td>ICBC, China — Shanghai (Bank country CN)</td>
-</tr>
-</tbody>
-</table></div>
-<h3>Dados mestre do grupo 61</h3>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Objeto</th>
-<th>Código</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Company</td>
-<td><code>S4C-61</code></td>
-<td>3999 West Chester Pike, Newtown Square, 19073, US, EN, USD</td>
-</tr>
-<tr>
-<td>Custom Field</td>
-<td><code>Custom Field S4C-61</code></td>
-<td>Identifier auto-gerado <code>ZZ1_CustomFieldS4C61</code> (prefixo <code>ZZ1_</code> padrão do sistema)</td>
-</tr>
-<tr>
-<td>Migration Project</td>
-<td><code>Migrate Data Bank 61</code></td>
-<td>1 objeto (Bank), 3 instâncias, Database Connection Local</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-<h2>Exercício 1 — Access, Explore, and Personalize the SAP Fiori Launchpad</h2>
-<h3>Contexto</h3>
-<p>Criar um usuário de teste, validar acesso ao Fiori Launchpad e personalizar a página My Home (seções customizadas, tiles, reposicionamento).</p>
-<h3>Sequência executada</h3>
-<pre><code>1. SU01 → cria S4C_USER_61 (senha inicial ••••••)
-2. Roles tab → Z_FIORI_FOUNDATION_USER, Z_BR_S4C03_USER_ROLE, Z_S4C02 → Save
-3. Login de teste com S4C_USER_61 → troca de senha forçada → ••••••
-4. Sign Out do usuário de teste; retorno às credenciais originais usuário de treinamento (grupo 61)
-</code></pre>
-<h3>🔧 Pegadinha — passos 5–15 não aplicáveis nesta versão do sistema</h3>
-<p>O roteiro oficial descreve criação de seções nomeadas (<strong>My Favorites</strong>, <strong>Custom Logic Apps</strong>) via menu <strong>"Edit Current Page" → +Add Section</strong>, com reposicionamento por drag-and-drop e exclusão seletiva.</p>
-<p>Nesta versão do sistema, o menu do usuário não tem mais "Edit Current Page" — foi substituído por <strong>"My Home Settings"</strong>, que abre um painel de <strong>Layout</strong> com apenas 4 blocos fixos e não-renomeáveis: <em>To-Dos</em>, <em>News and Pages</em>, <em>Apps</em>, <em>Insights Tiles and Cards</em>. Não há suporte a criar seções customizadas livres nem a excluir blocos — só habilitar/desabilitar visibilidade e reordenar via drag-and-drop.</p>
-<p><strong>Causa raiz:</strong> mudança de release do Fiori Launchpad (experiência "Horizon"/My Home reestruturada) posterior à criação do material de treinamento. Não é erro de execução.</p>
-<p><strong>Decisão tomada:</strong> passos 5–15 pulados, documentados como divergência de versão. Passos 1–4 e 16 (criação/teste de usuário, fechamento) executados normalmente.</p>
-<h3>✅ Diagnóstico AMS</h3>
-<ul>
-<li>"A documentação de treinamento não bate com o sistema produtivo" → identificar mudança de release/FPS antes de tentar forçar passos obsoletos; nunca insistir em um caminho de UI que não existe mais.</li>
-<li>Personalização de launchpad é armazenada por camada (USER vs. admin/shared) — distinguir seção customizável do usuário (sempre pode ser removida) de seção admin-defined/predelivered (só pode ser resetada, nunca deletada) continua válido mesmo com a UI nova.</li>
-</ul>
-<hr />
-<h2>Exercício 2 — Define an Organizational Structure Entity</h2>
-<h3>Contexto</h3>
-<p>Criar uma nova Company via IMG (SPRO), gerando uma transportable customizing request.</p>
-<h3>Sequência executada</h3>
-<pre><code>SPRO → SAP Reference IMG
-  → Enterprise Structure → Definition → Financial Accounting → Define company
-    → New Entries
-       Company: S4C-61
-       Company Name: Test Company S4C-61
-       Street: 3999 West Chester Pike
-       Postal Code: 19073
-       City: Newtown Square
-       Country: US | Language Key: EN | Currency: USD
-    → Save → Create Request → &quot;System Exercise_61&quot; → Save → Continue
-</code></pre>
-<p><strong>Resultado:</strong> entrada <code>S4C-61</code> salva com sucesso, vinculada a customizing request.</p>
-<h3>✅ Diagnóstico AMS</h3>
-<ul>
-<li>Company/Company Code via SPRO é <strong>customizing</strong> (sempre vai para transporte) — diferente de master data, que não é transportável. Confundir as duas categorias é erro comum de consultor júnior.</li>
-<li>"Não consigo salvar minha configuração" em cenário real → verificar se há developer key/autorização de transporte, não assumir bug.</li>
-</ul>
-<hr />
-<h2>Exercício 3 — Access the Cloud Integration Automation Service (CIAS)</h2>
-<h3>Contexto</h3>
-<p>Exercício de consulta/leitura (sem gravação no sistema) no SAP Activate Roadmap Viewer, revisando os requisitos técnicos do serviço CIAS.</p>
-<h3>🔧 Pegadinha — portal migrado de endereço</h3>
-<p>O link antigo do roteiro (<code>go.support.sap.com/roadmapviewer</code>, acesso anônimo) retorna <strong>HTTP 404</strong> — descontinuado. Acesso atual exige login com <strong>SAP Universal ID</strong>, via <strong>SAP for Me</strong>: <code>https://me.sap.com/roadmapviewer</code>.</p>
-<p>Nomenclatura de roadmap também mudou: "RISE with SAP S/4HANA Cloud Private Edition" foi renomeado para <strong>"SAP Cloud ERP Private"</strong>. Caminho de navegação atualizado:</p>
-<pre><code>me.sap.com/roadmapviewer → Explorar todos os roadmaps
-  → aba &quot;Cloud ERP&quot; → seção &quot;SAP Cloud ERP Private (4)&quot;
-    → &quot;SAP Activate para SAP Cloud ERP Private - Nova implementação&quot;
-      → Conteúdo → Preparar → Acesso inicial ao sistema para SAP Business Technology Platform
-        → Assinar o serviço Cloud Integration Automation no SAP BTP
-</code></pre>
-<h3>Conceito</h3>
-<p>O CIAS entrega um workflow guiado no BTP para configurar integrações entre S/4HANA Cloud Private Edition e outras soluções SAP em nuvem.</p>
-<p><strong>Pré-requisitos:</strong>
-- Subconta BTP Cloud Foundry num data center suportado (ou conta SAP Cloud Integration)
-- Instâncias de sistema licenciadas dentro do escopo do serviço</p>
-<p><strong>Regra de assinatura — o ponto central:</strong>
-| Cenário | Ação |
-|---|---|
-| Cliente já tem tenant <strong>SAP Cloud ALM</strong> solicitado | CIAS é assinado <strong>automaticamente</strong> na mesma subconta BTP — só verificar provisionamento |
-| Cloud ALM veio de outra assinatura, ou quer instância CIAS separada | Assinar manualmente na subconta BTP, seguindo o acelerador oficial |</p>
-<h3>✅ Diagnóstico AMS</h3>
-<ul>
-<li>"Portal/link de documentação não abre" → segundo caso do dia do mesmo padrão do Ex.1: buscar pelo nome atual da ferramenta em vez de confiar em link salvo, pois portais SAP migram de endereço com frequência.</li>
-<li>"Por que o CIAS não está disponível pro meu cliente?" → verificar primeiro se o tenant do Cloud ALM já foi solicitado; é ele que dispara o provisionamento automático do CIAS.</li>
-</ul>
-<hr />
-<h2>Exercício 4 — Adding a Custom Field</h2>
-<h3>Contexto</h3>
-<p>Criar um campo customizado via app Fiori <strong>Custom Fields</strong> (via extensibilidade in-app, sem tocar em ABAP) e habilitá-lo em UIs/reports relevantes.</p>
-<h3>Sequência executada</h3>
-<pre><code>App Custom Fields → (+) Create
-  Business Context: Bank Account Master Data
-  Label: Custom Field S4C-61
-  Identifier: (auto) ZZ1_CustomFieldS4C61
-  Tooltip: (auto) Custom Field S4C-61
-  Type: Text | Length: 20
-→ Create and Edit
-
-Aba User Interfaces → Enable Usage em:
-  C_BANKACCOUNTTP, FCLM_BAM_ACCOUNTWD_SRV → propagou para os 4 data sources da árvore
-  (todos passaram a Enabled com um clique cada, sem travamento)
-
-C_BankAccountTPType → detalhe → Search Relevance → ON
-
-→ Save → Publish
-</code></pre>
-<p><strong>Resultado esperado (conforme roteiro) — confirmado:</strong></p>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Data Source</th>
-<th>Search Relevance</th>
-<th>Field Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bank Account Administrative Data (I_BANKACCOUNTTP / C_BANKACCOUNTTP)</td>
-<td>— / Enabled</td>
-<td>Enabled</td>
-</tr>
-<tr>
-<td>Bank Account BO active and draft (C_BankAccountTPType)</td>
-<td>Enabled</td>
-<td>Enabled</td>
-</tr>
-<tr>
-<td>Manage Bank Account (FCLM_BAM_ACCOUNTWD_SRV)</td>
-<td>—</td>
-<td>Enabled</td>
-</tr>
-</tbody>
-</table></div>
-<h3>🔧 Pegadinha — identificador ganha prefixo automático</h3>
-<p>O sistema prefixa automaticamente o identifier com <code>ZZ1_</code> (não <code>Z</code>/<code>Y</code> como em ABAP clássico) — indicativo visual de que o campo nasceu via extensibilidade in-app "clean core", não via desenvolvimento direto.</p>
-<h3>✅ Diagnóstico AMS</h3>
-<ul>
-<li>Custom Fields é a via recomendada pela SAP para extensibilidade clean core — nunca sugerir ABAP direto num sistema Cloud Private Edition gerenciado para esse tipo de necessidade.</li>
-<li>"Criei o campo mas não aparece na tela" → 90% das vezes falta <strong>Publish</strong> (campo fica em rascunho/"Publishing..." indefinidamente sem essa ação).</li>
-<li>"Criei o campo mas não consigo buscar por ele" → falta de <strong>Search Relevance</strong>, não bug — campo existe mas não está indexado para filtro/busca.</li>
-</ul>
-<hr />
-<h2>Exercício 5 — Migrate Legacy Data</h2>
-<h3>Contexto</h3>
-<p>Ciclo completo de migração de dados legados via <strong>Migrate Your Data</strong> (staging tables): criar projeto, copiar objeto de migração Bank, baixar template, popular dados, subir template, preparar staging, confirmar mapeamentos, simular e migrar, validar resultado.</p>
-<h3>Task 1 — Identificação do objeto (consulta rápida, sem navegação no Help Portal)</h3>
-<ul>
-<li>Transação SAP GUI de validação: <strong>FI03</strong> (Display Bank)</li>
-<li>App Fiori de validação: <strong>Manage Banks</strong></li>
-</ul>
-<h3>Sequência executada — Tasks 2 a 6</h3>
-<pre><code>Task 2 — Criar projeto
-Migrate Your Data → Create → Migrate Data Using Staging Tables
-  Name: Migrate Data Bank 61
-  Database Connection: Local SAP S/4HANA Database Schema
-  → Step 2 → Local Package ($TMP) → Step 3
-  → marcar objeto Bank → mover (&gt;) → Review → Create Project
-
-Task 3 — Download template
-Selecionar objeto Bank → Download Template (dropdown no header) → Download XML File
-
-Task 4 — Popular dados (Excel)
-Bank Master tab:
-  CN | 960161 | ICBC, China | ChenHui RD, 1001 | Shanghai
-  CN | 960261 | ICBC, China | Main RD, 3002    | Shanghai
-  CN | 960361 | ICBC, China | PuDong RD, 1003  | Shanghai
-Save As → Source Data for Bank_61.xml (manter formato XML)
-
-Task 5 — Upload + preparação + mapeamento + simulação + migração
-Upload File → Source Data for Bank_61.xml
-  → status: &quot;Data Successfully Transferred to Staging Tables&quot;
-→ Prepare → Consistency Check ON → Prepare Staging Tables → Monitoring → Completed
-→ Mapping Tasks → confirmar Country/Region Key + Bank Key (via lista, sem entrar item a item)
-  → contadores: To Be Confirmed 0, Confirmed 2
-→ Migrate → All Instances → Start Migration
-  → Migration Progress: 100%, Successful: 3, Errors: 0
-
-Task 6 — Validação
-Manage Banks - Master Data → filtro Bank Country/Region: CN → Go
-  → 3 registros confirmados: 960161, 960261, 960361 (ICBC, China), endereços corretos
-</code></pre>
-<h3>🔧 Pegadinhas identificadas</h3>
-<ol>
-<li><strong>Botão "Step 2" fora da área visível</strong> — não era travamento algum; o botão renderiza abaixo de um dropdown vazio no formulário e ficou coberto por um tooltip de preview do navegador (hover sobre aba). Antes de reportar "botão não aparece", sempre: (a) fechar popups/tooltips do navegador, (b) rolar a tela inteira.</li>
-<li><strong>Mapping Tasks simplificado nesta versão</strong> — o roteiro descreve confirmar cada mapeamento individualmente (entrar no detalhe, marcar, confirmar, voltar). Nesta versão do app, dá pra marcar a checkbox de cada mapping direto na lista e clicar <strong>Confirm</strong> no header, sem entrar em cada um. Mais rápido que o documentado.</li>
-<li>Coluna <strong>Simulation</strong> ficou com "Successful: 0" mesmo após migração 100% bem-sucedida — não bloqueante; provavelmente o contador de Simulation só reflete se o Simulate formal foi disparado separadamente antes do Migrate, e neste ciclo a migração seguiu direto sem esse passo isolado ter sido contabilizado à parte.</li>
-</ol>
-<h3>✅ Diagnóstico AMS</h3>
-<ul>
-<li><strong>Consistency Check</strong> na preparação do staging valida integridade referencial (chaves duplicadas, campos obrigatórios ausentes) antes do mapeamento — pular essa checagem é causa comum de erro só descoberto tarde, na simulação, mais caro de corrigir.</li>
-<li><strong>Simulate antes de Migrate</strong> é dry-run que evita gravação parcial de dados inválidos — prática de risco em projeto real é pular direto pro Migrate.</li>
-<li>Sempre validar resultado final via <strong>app Fiori</strong> (Manage Banks) e, se aplicável, também via transação GUI (FI03) — o roteiro reforça que ambos os caminhos de validação existem e podem ser cobrados separadamente em cenário de suporte.</li>
-</ul>
-<hr />
-<h2>🎯 Resumo executivo — Aprendizados-chave</h2>
-<ol>
-<li>
-<p><strong>Documentação de treinamento envelhece mais rápido que o sistema.</strong> Três exercícios diferentes (Ex.1 seções do launchpad, Ex.3 link do Roadmap Viewer, Ex.5 confirmação de mappings) mostraram UI/portal reestruturados desde a escrita do roteiro. O hábito correto é sempre validar a versão atual e adaptar, nunca insistir num caminho que sumiu.</p>
-</li>
-<li>
-<p><strong>"Travado" quase sempre é "fora da tela".</strong> O caso do botão Step 2 (Ex.5) — coberto por um tooltip do navegador e abaixo do viewport — reforça: antes de escalar como bug, sempre limpar popups e rolar a página inteira.</p>
-</li>
-<li>
-<p><strong>Custom Fields (Ex.4) é a via clean core para extensibilidade em campo.</strong> Prefixo automático <code>ZZ1_</code> sinaliza origem via extensibilidade in-app. Nunca recomendar ABAP direto num sistema Cloud Private Edition gerenciado para essa necessidade.</p>
-</li>
-<li>
-<p><strong>Publish ≠ Save em Custom Fields.</strong> Campo salvo sem Publish fica em "Publishing..." — visível na lista, mas não ativo em produção. Causa raiz clássica de "criei mas não aparece".</p>
-</li>
-<li>
-<p><strong>CIAS não se assina no vácuo — depende do Cloud ALM.</strong> Se o cliente não solicitou o tenant do SAP Cloud ALM, o CIAS não aparece provisionado automaticamente. Pergunta de triagem #1 em ticket de "CIAS indisponível".</p>
-</li>
-<li>
-<p><strong>Migração de dados tem ciclo obrigatório em 6 etapas</strong> (Task 1 a 6 do Ex.5): identificar objeto → criar projeto → baixar template → popular → subir/preparar/mapear/simular/migrar → validar. Pular Consistency Check ou Simulate é risco real, não só formalidade do roteiro.</p>
-</li>
-<li>
-<p><strong>Company (Ex.2) é customizing, sempre transportável.</strong> Diferente de master data. Confundir as duas categorias trava saves em ambiente real por falta de developer key/request.</p>
-</li>
-<li>
-<p><strong>Nomenclatura com sufixo <code>##</code>/grupo continua sendo o ponto de maior risco de erro em qualquer exercício</strong> — em exame SyBA, nome incorreto zera a tarefa mesmo com configuração tecnicamente perfeita.</p>
-</li>
-</ol>
-<hr />
-<h2>📚 Referência técnica</h2>
-<h3>Transações</h3>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Transação</th>
-<th>Função</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>SU01</strong></td>
-<td>Criar/gerenciar usuário (Ex.1)</td>
-</tr>
-<tr>
-<td><strong>SPRO</strong></td>
-<td>Customizing geral — acesso ao SAP Reference IMG (Ex.2)</td>
-</tr>
-<tr>
-<td><strong>FI03</strong></td>
-<td>Display Bank — validação pós-migração (Ex.5, não executada nesta sessão)</td>
-</tr>
-<tr>
-<td>LTMC / LTMOM</td>
-<td>Equivalentes GUI clássicos do Migration Cockpit (não usados — Ex.5 é 100% Fiori)</td>
-</tr>
-</tbody>
-</table></div>
-<h3>Apps Fiori</h3>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>App</th>
-<th>Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>SAP Fiori Launchpad</strong></td>
-<td>Acesso, personalização (My Home Settings), navegação geral</td>
-</tr>
-<tr>
-<td><strong>Custom Fields</strong> (Custom Fields and Logic)</td>
-<td>Criação e publicação de campos customizados</td>
-</tr>
-<tr>
-<td><strong>Migrate Your Data</strong></td>
-<td>Ciclo completo de migração via staging tables</td>
-</tr>
-<tr>
-<td><strong>Manage Banks - Master Data</strong></td>
-<td>Validação pós-migração de dados bancários</td>
-</tr>
-</tbody>
-</table></div>
-<h3>Caminho SPRO — Define Company</h3>
-<pre><code>SPRO → SAP Reference IMG
-  → Enterprise Structure
-    → Definition
-      → Financial Accounting
-        → Define company
-</code></pre>
-<h3>Caminho de navegação — Roadmap Viewer (versão atual, pós-migração de portal)</h3>
-<pre><code>me.sap.com/roadmapviewer (login com SAP Universal ID)
-  → Explorar todos os roadmaps → Cloud ERP → SAP Cloud ERP Private
-    → SAP Activate para SAP Cloud ERP Private - Nova implementação
-      → Conteúdo → Preparar → Acesso inicial ao sistema para SAP Business Technology Platform
-        → Assinar o serviço Cloud Integration Automation no SAP BTP
-</code></pre>
-<h3>Data Sources habilitados em Custom Fields (Ex.4)</h3>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Data Source</th>
-<th>Tipo</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>C_BANKACCOUNTTP</code></td>
-<td>CDS View</td>
-<td>Bank Account Administrative Data</td>
-</tr>
-<tr>
-<td><code>I_BANKACCOUNTTP</code></td>
-<td>CDS View</td>
-<td>Bank Account BO active and draft</td>
-</tr>
-<tr>
-<td><code>FCLM_BAM_ACCOUNTWD_SRV</code></td>
-<td>OData Service</td>
-<td>Manage Bank Account</td>
-</tr>
-<tr>
-<td><code>C_BankAccountTPType</code></td>
-<td>OData Entity</td>
-<td>Bank Account Administrative Data (com Search Relevance)</td>
-</tr>
-</tbody>
-</table></div>
-<hr />
-<h2>Status da trilha após esta prática</h2>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Curso</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Complementar</td>
-<td>S4C03 — Implementing SAP S/4HANA Cloud Private Edition</td>
-<td>✅ <strong>Concluído — 5/5 exercícios, sem erros na migração final</strong></td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Próximo foco:</strong> revisão geral + simuladores de exame + agendamento do C_TS462, conforme roadmap da trilha SD.</p>
+  <p class="intro">A visão de implementação: como se estende e se alimenta um S/4HANA Cloud Private Edition sem quebrar o princípio de clean core.</p>
+  <section>
+    <h2>O que executei</h2>
+    <ul class="fez"><li>Criei usuário com roles Fiori e personalizei o launchpad — adaptando o roteiro à versão atual da interface, que divergia do documentado</li><li>Defini uma empresa no customizing com geração de request de transporte</li><li>Criei campo customizado via extensibilidade in-app (a via clean core para extensão de campos), incluindo o ciclo completo de publicação</li><li>Executei um projeto de migração de dados legados por staging tables de ponta a ponta: template, carga, verificação de consistência, mapeamento, simulação, migração e validação do resultado por dois caminhos (Fiori e transação)</li></ul>
+  </section>
+  <section>
+    <h2>O que aprendi diagnosticando</h2>
+    <ul class="apr"><li>Que documentação de treinamento envelhece mais rápido que o sistema — três exercícios tinham interfaces reestruturadas; o hábito certo é validar a versão atual e adaptar, não insistir no caminho que sumiu</li><li>Que “campo criado mas não aparece” costuma ser campo salvo sem publicar — salvar e publicar são passos distintos na extensibilidade</li><li>Que pular a verificação de consistência ou a simulação na migração é economizar minutos para pagar em horas: erro descoberto tarde custa mais caro</li></ul>
+  </section>
+  <div class="navdocs">
+    <a href="index.html">← todos os módulos</a>
+  </div>
 </div></article>
-<footer><div class="wrap">
-  <span>Documentação autoral · ambiente de treinamento SAP</span>
-  <span><a href="index.html">← todos os módulos</a></span>
-</div></footer>
+<footer><div class="wrap">Documentação autoral de experiência prática em ambiente de treinamento SAP · não representa projetos de clientes reais</div></footer>
 </body>
 </html>
