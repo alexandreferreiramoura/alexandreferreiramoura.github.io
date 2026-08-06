@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S46051 — Acordos-Quadro · Alexandre Ferreira Moura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
+--sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;font-size:15.5px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+.topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
+.pagehead{padding:44px 0 34px;border-bottom:1px solid var(--line);background:var(--paper)}
+.pagehead .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sys);margin-bottom:10px}
+.pagehead h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.015em;line-height:1.15}
+.pagehead .sub{color:var(--ink-soft);margin-top:8px;font-size:.95rem}
+article{padding:44px 0 70px}
+article h1{display:none}
+article h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:46px 0 16px;padding-top:22px;border-top:1px solid var(--line)}
+article h2:first-child{margin-top:0;border-top:none;padding-top:0}
+article h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:30px 0 10px}
+article h4{font-weight:600;font-size:.95rem;margin:22px 0 8px}
+article p{margin-bottom:14px}
+article ul,article ol{margin:0 0 16px 22px}
+article li{margin-bottom:6px}
+article strong{font-weight:600}
+article em{color:var(--ink-soft)}
+article hr{border:none;border-top:1px solid var(--line);margin:36px 0}
+article blockquote{border-left:3px solid var(--ops);background:var(--paper);padding:12px 18px;margin:0 0 16px;color:var(--ink-soft);border-radius:0 8px 8px 0}
+article code{font-family:var(--mono);font-size:.83em;background:var(--sys-soft);color:#094F9E;padding:2px 6px;border-radius:4px}
+article pre{background:#0F1C2B;color:#D8E4F0;padding:18px 20px;border-radius:10px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.6}
+article pre code{background:none;color:inherit;padding:0}
+article table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem;background:var(--paper);border-radius:8px;overflow:hidden}
+article th{background:var(--ink);color:#fff;text-align:left;padding:10px 14px;font-weight:600;font-size:.82rem}
+article td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+article tr:last-child td{border-bottom:none}
+.tablewrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:8px}
+.tablewrap table{margin:0;border-radius:0}
+footer{border-top:1px solid var(--line);padding:34px 0 60px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
+@media(max-width:640px){article table{font-size:.8rem}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="name">Alexandre Ferreira Moura</span>
+  <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
+</div></div>
+<div class="pagehead"><div class="wrap">
+  <p class="eyebrow">Prática hands-on · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <h1>S46051 — Acordos-Quadro</h1>
+  <p class="sub">4 exercícios · Contratos de quantidade, valor e rental</p>
+</div></div>
+<article><div class="wrap">
+<h1>S46051 — Definindo Acordos-Quadro (Outline Agreements)</h1>
+<h2>Banco de Aprendizado — Prática Hands-on (SAP S/4HANA 2025)</h2>
+<p><strong>Aluno:</strong> Alexandre Ferreira Moura
+<strong>Sistema de prática:</strong> ambiente de treinamento SAP S/4HANA 2025 (SAP Learning Hub), Client 400
+<strong>Login usado:</strong> usuário de treinamento (grupo 34)
+<strong>Grupo (##):</strong> 34
+<strong>Course Version:</strong> 2510
+<strong>Trilha:</strong> C_TS462 — SAP Certified Associate, SAP S/4HANA Cloud Private Edition, Sales
+<strong>Status:</strong> ✅ Concluído (4 exercícios / 3 Units)
+<strong>Data da prática:</strong> 28–29/07/2026</p>
+<hr />
+<h2>📌 Objetos-chave criados nesta prática</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inquiry</td>
+<td><strong>0010000020</strong></td>
+<td>IN, C605-A34, P605-134, 20 PC</td>
+</tr>
+<tr>
+<td>Quotation</td>
+<td><strong>0020000012</strong></td>
+<td>QT, ref. à Inquiry, validade 1 mês</td>
+</tr>
+<tr>
+<td>Standard Order</td>
+<td><strong>425</strong></td>
+<td>5 PC, ref. <code>34TA01</code></td>
+</tr>
+<tr>
+<td>Standard Order</td>
+<td><strong>426</strong></td>
+<td>15 PC, ref. <code>34TA02</code></td>
+</tr>
+<tr>
+<td><strong>Quantity Contract (KM)</strong></td>
+<td><strong>400000016</strong></td>
+<td>P605-334, Target 50 PC, K007 20% → Net 60.000 EUR</td>
+</tr>
+<tr>
+<td>Release Orders (KM)</td>
+<td><strong>435 / 436 / 437 / 439</strong></td>
+<td>10 + 15 + 5 + 10 = 40 PC vinculados</td>
+</tr>
+<tr>
+<td>Order fora do contrato</td>
+<td><strong>438</strong></td>
+<td>ZA34, 5 PC, sem vínculo (proposital)</td>
+</tr>
+<tr>
+<td>Orders duplicados/avulsos</td>
+<td><strong>440 / 441 / 442</strong></td>
+<td>11 PC cada, sem vínculo (contrato já esgotado)</td>
+</tr>
+<tr>
+<td><strong>Value Contract (WK1)</strong></td>
+<td><strong>40000017</strong></td>
+<td>C605-B34, Target 20.000 EUR, K007 10% → Net 18.000 EUR</td>
+</tr>
+<tr>
+<td>Assortment Module</td>
+<td><strong>10000000107</strong></td>
+<td>"VC module 34" — P605-134/234/334, válido até 31.12.2027</td>
+</tr>
+<tr>
+<td>Release Orders (WK1)</td>
+<td><strong>445 / 446 / 447 / 448</strong></td>
+<td>Released final: <strong>22.140,00 EUR</strong></td>
+</tr>
+<tr>
+<td><strong>Rental Contract (MV)</strong></td>
+<td><strong>40000018</strong></td>
+<td>C605-B34, contract profile automático</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Dados mestre do grupo 34</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sold-to A</td>
+<td><code>C605-A34</code></td>
+<td>Astoria-Cycle 34 (Walldorf)</td>
+</tr>
+<tr>
+<td>Sold-to B</td>
+<td><code>C605-B34</code></td>
+<td>Galileo-Bikes 34 (Bonn)</td>
+</tr>
+<tr>
+<td>Parceiro alternativo AA</td>
+<td><code>C620-A34</code></td>
+<td>Amadeus 34 (Heidelberg)</td>
+</tr>
+<tr>
+<td>Parceiro alternativo AW</td>
+<td><code>C620-B34</code></td>
+<td>Leonardo 34</td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-134</code></td>
+<td>Alpha-Bike 34 — <strong>1.000,00 EUR/PC</strong></td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-234</code></td>
+<td>Beta-Bike 34 — <strong>1.250,00 EUR/PC</strong></td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-334</code></td>
+<td>Gamma-Bike 34 — <strong>1.500,00 EUR/PC</strong></td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-734</code></td>
+<td>Max-Bike 34</td>
+</tr>
+<tr>
+<td>Material de controle</td>
+<td><code>WKM1</code></td>
+<td>"Control of value contracts" — não vendável</td>
+</tr>
+<tr>
+<td>Doc. type customizado</td>
+<td><code>ZA34</code></td>
+<td>Trade Fair34-Order</td>
+</tr>
+<tr>
+<td>Sales Area</td>
+<td><code>1010 / 10 / 00</code></td>
+<td>Sales Org Germany, Direct Sales, Cross Division</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>UNIT 1 — Execute a Sales and Distribution Process (Exercício 1)</h2>
+<h3>Contexto</h3>
+<p>Ciclo de presales completo (Inquiry → Quotation → Order), com exploração dos campos derivados automaticamente no pedido.</p>
+<h3>Sequência executada</h3>
+<pre><code>Inquiry 0010000020 (Manage Sales Inquiries, tipo IN)
+  → Sold-to: C605-A34 | Cust.Ref: 34AF01
+  → Req. delivery date: hoje + 2 semanas
+  → Material P605-134, qtd 20
+       ↓ Create with Reference
+Quotation 0020000012 (Manage Sales Quotations, tipo QT)
+  → Cust.Ref: 34AG01 | Valid To: hoje + 1 mês
+       ↓ Create with Reference + Item Selection
+Standard Order 425 (VA01, tipo OR) — qtd reduzida para 5 | Cust.Ref: 34TA01
+Standard Order 426 (VA01, tipo OR) — 15 PC restantes | Cust.Ref: 34TA02
+</code></pre>
+<h3>Document Flow — evolução dos status</h3>
+<p><strong>Após o pedido 425 (5 de 20 PC):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inquiry 0010000020</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>Quotation 0020000012</td>
+<td><strong>In Process</strong></td>
+</tr>
+<tr>
+<td>Standard Order 425</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Após o pedido 426 (20 de 20 PC):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inquiry 0010000020</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>Quotation 0020000012</td>
+<td><strong>Completed</strong></td>
+</tr>
+<tr>
+<td>Standard Order 425</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Standard Order 426</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Regra confirmada:</strong> a Quotation só migra para <code>Completed</code> quando <strong>toda</strong> a quantidade tiver sido convertida em pedido. Conversão parcial mantém <code>In Process</code>.</p>
+</blockquote>
+<h3>Campos derivados no pedido 426 (investigação)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+<th>Onde encontrar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR00 (preço/PC)</td>
+<td><code>1.000,00 EUR</code></td>
+<td>Item → Item Conditions</td>
+</tr>
+<tr>
+<td>Sales Office</td>
+<td><code>1000 – Sales Office Hamburg</code></td>
+<td>Header → aba Sales</td>
+</tr>
+<tr>
+<td>Sales Group</td>
+<td><code>100 – Sales Group 100</code></td>
+<td>Header → aba Sales</td>
+</tr>
+<tr>
+<td>Sales Employee</td>
+<td><code>00000098 – Suzan Silver</code></td>
+<td>Header → aba <strong>Partner</strong></td>
+</tr>
+<tr>
+<td>Division</td>
+<td><code>03 – Motorcycles/Bikes</code></td>
+<td>Item → aba <strong>Sales B</strong></td>
+</tr>
+<tr>
+<td>Material Pricing Group</td>
+<td><code>Normal</code></td>
+<td>Item → aba Sales B</td>
+</tr>
+<tr>
+<td>Material Group</td>
+<td><code>L001 – Trading Materials</code></td>
+<td>Item → aba Sales B</td>
+</tr>
+<tr>
+<td>Price List Type</td>
+<td><code>Wholesale</code></td>
+<td>Header → aba Sales (Pricing and Statistics)</td>
+</tr>
+<tr>
+<td>CustPrice Group</td>
+<td><code>Bulk buyer</code></td>
+<td>Header → aba Sales</td>
+</tr>
+<tr>
+<td>Pricing Procedure</td>
+<td><code>RVAA01 – Standard</code></td>
+<td>Header → aba Sales</td>
+</tr>
+<tr>
+<td>Plant</td>
+<td><code>1010</code></td>
+<td>Item → visão <strong>All Items</strong></td>
+</tr>
+<tr>
+<td>Shipping Point</td>
+<td><code>1010</code></td>
+<td>Item → visão All Items</td>
+</tr>
+<tr>
+<td>Route</td>
+<td><code>R00025</code> (Hamburg → Frankfurt)</td>
+<td>Item → visão All Items</td>
+</tr>
+<tr>
+<td>Incoterms</td>
+<td><code>EXW</code> / Location 1: <code>Hamburg</code></td>
+<td>Header → aba <strong>Billing Document</strong></td>
+</tr>
+<tr>
+<td>Payment Terms</td>
+<td><code>ZB01</code> (14 days 3%, 30/2%, 45 net)</td>
+<td>Header → aba Billing Document</td>
+</tr>
+<tr>
+<td>Payer</td>
+<td><code>C605-A34</code></td>
+<td>Header → aba Billing Document</td>
+</tr>
+<tr>
+<td>Material Availability Date</td>
+<td><code>07.08.2026</code></td>
+<td>Item → All Items</td>
+</tr>
+<tr>
+<td>Loading Date</td>
+<td><code>10.08.2026</code></td>
+<td>Item → All Items</td>
+</tr>
+<tr>
+<td>Confirmed Delivery Date</td>
+<td><code>12.08.2026</code></td>
+<td>Item → All Items / Schedule Lines</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🔧 Pegadinhas de navegação (Fiori vs. GUI)</h3>
+<ul>
+<li><strong>Incoterms e Payment Terms</strong> não estão na aba Sales — ficam em <strong>Billing Document</strong> (bloco "Terms of Delivery and Payment").</li>
+<li><strong>Division</strong> e <strong>Material Pricing Group</strong> ficam no <strong>item</strong> (aba Sales B), não no cabeçalho.</li>
+<li><strong>Plant / Shipping Point / Route / datas</strong> aparecem todos juntos na visão <strong>All Items</strong> — atalho muito mais rápido que abrir cada aba do item.</li>
+<li>Não confundir <strong>Material Group</strong> (<code>L001</code>) com <strong>Material Pricing Group</strong> (<code>Normal</code>) — campos distintos, ambos na Sales B.</li>
+</ul>
+<h3>✅ Diagnóstico AMS</h3>
+<p>O conjunto Sales Office/Employee + Plant + Route + Incoterms + Payment Terms é o <strong>kit de diagnóstico padrão</strong> para chamados do tipo <em>"por que o pedido do cliente X saiu com prazo/rota/condição diferente do esperado?"</em>. Todos derivam do <strong>cadastro do parceiro + Sales Area</strong>, e só são sobrescritos manualmente em exceções. Se o valor está errado no pedido, a causa raiz quase sempre está no BP, não no pedido.</p>
+<h3>Configuração de produtividade (Passo 17)</h3>
+<pre><code>Perfil do usuário → Settings → Default Values
+  Sales Order Type: OR
+  Sales Organization: 1010
+  Distribution Channel: 10
+  Division: 00
+  Display Currency: EUR
+</code></pre>
+<p>Evita redigitar a Sales Area em cada documento novo — vale configurar no primeiro login de qualquer sistema de prática.</p>
+<hr />
+<h2>UNIT 2 — Working with Quantity Contracts (Exercício 2)</h2>
+<h3>Conceito</h3>
+<p><strong>Quantity Contract (<code>KM</code>)</strong> = acordo de que o cliente comprará uma <strong>quantidade</strong> de um produto num período. O contrato tem quantidade e preço, mas <strong>não tem cronograma de entregas</strong>. O cliente cumpre o contrato criando <strong>release orders</strong> (call-offs) que referenciam o contrato — o sistema abate automaticamente a quantidade liberada.</p>
+<h3>Criação (Manage Sales Contracts)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order type</td>
+<td><code>KM</code></td>
+</tr>
+<tr>
+<td>Sales Area</td>
+<td><code>1010 / 10 / 00</code></td>
+</tr>
+<tr>
+<td>Sold-to Party</td>
+<td><code>C605-A34</code></td>
+</tr>
+<tr>
+<td>Cust. Reference</td>
+<td><code>34KM</code></td>
+</tr>
+<tr>
+<td>Description</td>
+<td><code>Quantity contract 34</code></td>
+</tr>
+<tr>
+<td>Valid to</td>
+<td>hoje + 6 meses</td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-334</code></td>
+</tr>
+<tr>
+<td>Target Quantity</td>
+<td><code>50</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Net Value inicial:</strong> 75.000,00 EUR (50 × 1.500)
+<strong>Após K007 20%</strong> (Item Conditions): <strong>60.000,00 EUR</strong></p>
+<h3>Evolução do consumo do contrato</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Passo</th>
+<th>Pedido</th>
+<th>Qtd</th>
+<th>Método de criação</th>
+<th>Order Qty acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td><code>435</code></td>
+<td>10</td>
+<td>Contrato → <strong>Create Subsequent Order</strong> → OR</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>436</code></td>
+<td>15</td>
+<td>VA01 → Create with Reference → aba Contract</td>
+<td>25</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>437</code></td>
+<td>5</td>
+<td>VA01 <strong>sem referência</strong> → pop-up → <strong>List</strong> → Copy</td>
+<td>30</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>438</code></td>
+<td>5</td>
+<td>VA01 tipo <code>ZA34</code> → pop-up → <strong>Cancel</strong></td>
+<td>30 <em>(não somou)</em></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>439</code></td>
+<td>10</td>
+<td>VA01 tipo <code>ZA34</code> → pop-up → List → Copy</td>
+<td>40</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>440/441/442</code></td>
+<td>11 cada</td>
+<td>VA01 <code>ZA34</code> — contrato já em 50</td>
+<td>50 <em>(não somou)</em></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Status final do contrato:</strong> <code>Completed</code> (Order Quantity = Target Quantity = 50 PC)</p>
+<h3>🔧 Três descobertas importantes desta unit</h3>
+<h4>1. Pedido sem referência não consome saldo nem herda condições</h4>
+<p>O pedido <code>438</code> (5 PC) foi salvo após <strong>cancelar</strong> o pop-up de outline agreement. Resultado:
+- Order Quantity do contrato permaneceu em 30 (não subiu)
+- <strong>Desconto K007 não foi aplicado</strong> → Net Value = 7.500 EUR (5 × 1.500, preço cheio)</p>
+<p><strong>Por quê o desconto não veio:</strong> o K007 foi inserido <strong>manualmente no item do contrato</strong>, não existe como registro de condição mestre (<code>VK13</code>) do cliente. Sem referência ao contrato, não há de onde herdar.</p>
+<h4>2. <code>Assign Contract → Item</code> falha em tipos de documento sem Copy Control</h4>
+<p>Tentativa de vincular retroativamente o pedido <code>438</code> (tipo <code>ZA34</code>):</p>
+<pre><code>Manage Sales Orders → 438 → Change
+→ Menu → Edit → Assign Contract → Item
+→ Contract: 400000016 → Assign
+</code></pre>
+<p><strong>Erro recebido:</strong> <code>Copying from sales document type CQ to CQ is not supported</code></p>
+<p><strong>Causa raiz:</strong> falta rota de <strong>Copy Control (<code>VTAA</code>)</strong> configurada envolvendo o tipo <code>ZA34</code>. Funciona com tipo <code>OR</code> (padrão), mas não com o tipo customizado.</p>
+<h4>3. Contrato esgotado deixa de ser oferecido — silenciosamente</h4>
+<p>A partir do momento em que o contrato atingiu 50/50 (<code>Completed</code>), o pop-up <strong>"Open outline agreements for item"</strong> simplesmente <strong>parou de aparecer</strong>, e os pedidos passaram a nascer sem o desconto. Nenhuma mensagem de erro ou aviso foi emitida.</p>
+<blockquote>
+<p>Isso explica os pedidos <code>440/441/442</code>: não foi erro de digitação nem de cache — o contrato já estava esgotado.</p>
+</blockquote>
+<h3>Customizing SPRO (Passo 11)</h3>
+<pre><code>SPRO → Sales and Distribution → Sales → Sales Documents
+     → Sales Document Header → Define Sales Document Types
+→ Position: ZA34 → Details → seção &quot;Transaction flow&quot;
+</code></pre>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor definido</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Outline agrmt mess.</strong></td>
+<td><code>F</code></td>
+<td>Check at item level and branch directly into selection list</td>
+</tr>
+<tr>
+<td><strong>Quotation messages</strong></td>
+<td><code>F</code></td>
+<td>Idem, para cotações em aberto</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Limitação confirmada:</strong> a config <code>F</code> só surte efeito enquanto existir contrato <strong>em aberto</strong> para o material. Contrato <code>Completed</code> → nenhuma verificação é disparada.</p>
+<h3>Validação final (Passo 14)</h3>
+<pre><code>Manage Sales Contracts → 400000016 → Create Subsequent Order → OR → OK
+</code></pre>
+<p><strong>Mensagem:</strong> <code>The reference has already been completely copied or rejected</code></p>
+<h3>✅ Diagnóstico AMS — Quantity Contracts</h3>
+<p><strong>Cenário 1 — "o desconto do contrato parou de aplicar"</strong>
+Checklist de causa raiz, em ordem:
+1. O contrato está <strong>esgotado</strong> (Order Qty = Target Qty)? → status <code>Completed</code>
+2. O contrato está <strong>vencido</strong> (Valid to no passado)?
+3. O pedido foi criado <strong>com referência</strong> ao contrato? (verificar Document Flow ou ausência das condições)
+4. A condição está no contrato ou é registro mestre? (<code>VK13</code>)</p>
+<p><strong>Cenário 2 — "não consigo vincular o pedido ao contrato depois de criado"</strong>
+→ Verificar Copy Control (<code>VTAA</code>) entre o tipo de pedido e o tipo de contrato. Tipos <code>Z*</code> customizados frequentemente não têm a rota configurada.</p>
+<p><strong>Cenário 3 — "o vendedor esquece de referenciar o contrato"</strong>
+→ Config <code>Outline agrmt mess. = F</code> no tipo de documento força a lista de seleção. Reduz drasticamente o volume desse ticket, mas não impede completamente (o usuário ainda pode cancelar o pop-up).</p>
+<hr />
+<h2>UNIT 3 — Work with Value Contracts (Exercício 3)</h2>
+<h3>Conceito</h3>
+<p><strong>Value Contract (<code>WK1</code>)</strong> = acordo por <strong>valor total</strong> (target value), não por quantidade. O cliente pode comprar qualquer produto <strong>permitido</strong> até esgotar o valor. Os produtos permitidos são restringidos por <strong>assortment module</strong> e/ou <strong>product hierarchy</strong>.</p>
+<blockquote>
+<p>⚠️ Este exercício é executado no <strong>SAP GUI back-end</strong> (<code>VA41</code>, <code>VA42</code>, <code>VA43</code>, <code>VA01</code>, <code>WSV2</code>, <code>SPRO</code>), não no Fiori.</p>
+</blockquote>
+<h3>Criação (<code>VA41</code>)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order type</td>
+<td><code>WK1</code></td>
+</tr>
+<tr>
+<td>Sales Area</td>
+<td><code>1010 / 10 / 00</code></td>
+</tr>
+<tr>
+<td>Sold-to Party</td>
+<td><code>C605-B34</code> (Galileo-Bikes 34)</td>
+</tr>
+<tr>
+<td>Cust. Reference</td>
+<td><code>34VC</code></td>
+</tr>
+<tr>
+<td>Description</td>
+<td><code>Value contract 34</code></td>
+</tr>
+<tr>
+<td>Valid from / to</td>
+<td>hoje até hoje + <strong>12 meses</strong></td>
+</tr>
+<tr>
+<td>Target value</td>
+<td><code>EUR 20.000,00</code></td>
+</tr>
+<tr>
+<td>Condição (item)</td>
+<td><code>K007</code> = 10%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Net Value:</strong> 18.000,00 EUR</p>
+<h3>Estrutura interna do value contract</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item Category</td>
+<td><strong><code>WKN</code></strong> — Value Contract Item</td>
+</tr>
+<tr>
+<td>Material do item</td>
+<td><strong><code>WKM1</code></strong> — "Control of value contracts" (fictício, não vendável)</td>
+</tr>
+<tr>
+<td>Value Released inicial</td>
+<td>0,00 EUR</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Determinação da Item Category (Passo 3)</h3>
+<pre><code>SPRO → Sales and Distribution → Sales → Sales Documents
+     → Sales Document Item → Assign Item Categories
+</code></pre>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>SaTy</th>
+<th>ItCGr</th>
+<th>Usage</th>
+<th>HLevItCa</th>
+<th>DfltC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WK1</code></td>
+<td><em>(vazio)</em></td>
+<td><strong><code>VCTR</code></strong></td>
+<td><em>(vazio)</em></td>
+<td><strong><code>WKN</code></strong></td>
+</tr>
+<tr>
+<td><code>WK1</code></td>
+<td><code>VCIT</code></td>
+<td><em>(vazio)</em></td>
+<td><em>(vazio)</em></td>
+<td><code>WKN</code></td>
+</tr>
+<tr>
+<td><code>WK2</code></td>
+<td><em>(vazio)</em></td>
+<td><code>VCTR</code></td>
+<td><em>(vazio)</em></td>
+<td><code>WKC</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>O indicador de uso <strong><code>VCTR</code></strong> é o que faz o sistema escolher <code>WKN</code>. É esse campo que diferencia item de value contract de item de venda normal. Tipo <code>WK2</code> (value contract com material específico) resolve para <code>WKC</code>.</p>
+</blockquote>
+<h3>Origem do material WKM1 (Passo 4)</h3>
+<pre><code>SPRO → SD → Sales → Sales Documents → Contracts → Value Contract
+     → Define Item Categories for Value Contract and Contract Rel.
+→ Position: WKN → Details → seção &quot;Value Contract&quot;
+</code></pre>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Value contract matl</strong></td>
+<td><code>WKM1</code></td>
+</tr>
+<tr>
+<td><strong>Contract Release Ctrl</strong></td>
+<td><code>A</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>O campo <code>Contract Release Ctrl</code> também responde o <strong>Passo 17</strong> (o que acontece quando o target value é excedido). Junto com <code>Completion rule</code> (seção Business Data), são os dois campos que controlam esse comportamento.</p>
+</blockquote>
+<h3>Por que WKM1 não pode ser copiado (Passos 5 e 6)</h3>
+<p><strong>Tentativa:</strong> <code>VA01</code> → OR → Create with reference → aba Contract → <code>40000017</code> → Item selection → Copy
+<strong>Mensagem:</strong> <code>Copying material in any value contract items is not permitted.</code></p>
+<p><strong>Onde isso é controlado:</strong></p>
+<pre><code>SPRO → SD → Sales → Sales Documents → Contracts → Value Contract
+     → Copying Control for Value Contract  (= VTAA)
+→ Position: Target OR / Source WK1 → Item → WKN → Details
+</code></pre>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cont. Item Copy Mode</strong></td>
+<td><code>A</code></td>
+<td>Value contract item material may not be copied</td>
+</tr>
+<tr>
+<td>ItemCat Proposal</td>
+<td><code>TAN</code></td>
+<td>Item do pedido nasce como item normal</td>
+</tr>
+<tr>
+<td>Pricing Type</td>
+<td><code>C</code></td>
+<td>Redetermina preço no release order</td>
+</tr>
+<tr>
+<td>Update Document Flow</td>
+<td><code>2</code></td>
+<td>Atualiza fluxo de documentos</td>
+</tr>
+<tr>
+<td>Copying Requirements (item)</td>
+<td><code>301</code></td>
+<td>Item rejection reas.</td>
+</tr>
+<tr>
+<td>Copying Requirements (header)</td>
+<td><code>002</code></td>
+<td>Header – diff. customer</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Release Orders executados</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Passo</th>
+<th>Pedido</th>
+<th>Cust.Ref</th>
+<th>Método</th>
+<th>Materiais / Qtd</th>
+<th>K007</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td><code>445</code></td>
+<td><code>34VC-01</code></td>
+<td>Item selection → <strong>Enter matl</strong></td>
+<td><code>P605-734</code> × 2</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>446</code></td>
+<td><code>34VC-02</code></td>
+<td>Item selection → <strong>Expand assort.</strong></td>
+<td><code>P605-134</code> × 2, <code>P605-334</code> × 2</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>447</code></td>
+<td><code>34VC-03</code></td>
+<td>Parceiro alternativo (AA)</td>
+<td><code>P605-134</code> × 3, <code>P605-234</code> × 3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>448</code></td>
+<td><code>34VC-04</code></td>
+<td>Excede o target</td>
+<td><code>P605-134/234/334</code> × 3 cada</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Value Released após pedido 447:</strong> <code>12.015,00 EUR</code>
+<strong>Value Released final:</strong> <strong><code>22.140,00 EUR</code></strong> (excedeu o target de 20.000 em 2.140)</p>
+<h3>Restrição de produtos: Assortment Module (Passos 8–11)</h3>
+<p><strong>Conceito:</strong> para impedir que produtos fora do escopo sejam vendidos via value contract, atribui-se ao contrato uma <strong>product hierarchy</strong> e/ou um <strong>value contract – assortment module</strong>. A atribuição restringe automaticamente todos os release orders daquele contrato.</p>
+<p><strong>Criação (<code>WSV2</code>):</strong></p>
+<pre><code>Logistics → SD → Master Data → Products
+         → Value Contract - Assortment Module → WSV2 Create
+→ Tela inicial: SEM entrada, clicar direto em &quot;Items&quot;
+→ Description: VC module 34
+→ Materiais: P605-134, P605-234, P605-334
+→ Valid-to: 31.12.2027
+→ Save
+</code></pre>
+<p><strong>Número gerado:</strong> <code>10000000107</code></p>
+<p><strong>Atribuição (<code>VA42</code>):</strong> campo <strong>Assortment Module</strong> no item do contrato → <code>10000000107</code> → Save</p>
+<p><strong>Efeito na criação do release order:</strong> botão <strong>Expand assort.</strong> passa a listar apenas os 3 materiais permitidos. O <code>P605-734</code> (Max-Bike), vendido no pedido 445 <em>antes</em> da restrição, deixa de aparecer.</p>
+<h3>Parceiros alternativos (Passos 12–13, 18–19)</h3>
+<p><strong>Atribuição (<code>VA42</code> → Goto → Header → Partner):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Partner Function</th>
+<th>Parceiro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>AA</code></strong></td>
+<td><code>C620-A34</code></td>
+<td>SP Contract rel. ord (Sold-to de release)</td>
+</tr>
+<tr>
+<td><strong><code>AW</code></strong></td>
+<td><code>C620-B34</code></td>
+<td>SH Contract rel. ord (Ship-to de release)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Partner Determination Procedure atribuído ao <code>WK1</code>:</strong></p>
+<pre><code>SPRO → SD → Basic Functions → Partner Determination
+     → Set Up Partner Determination → ...for Sales Document Header
+→ Partner Determination Procedure Assignment → Position: WK1
+</code></pre>
+<p><strong>Resultado:</strong> procedimento <strong><code>KAB</code> – Release order</strong></p>
+<p><strong>Funções configuradas no procedimento KAB</strong> (pasta <em>Partner Functions in Procedure</em>, com KAB selecionado):</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Nome</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>AA</code></strong></td>
+<td>SP Contract rel. ord</td>
+<td><strong><code>C</code></strong> (contrato)</td>
+</tr>
+<tr>
+<td><strong><code>AW</code></strong></td>
+<td>SH Contract rel. ord</td>
+<td><strong><code>C</code></strong> (contrato)</td>
+</tr>
+<tr>
+<td><code>SP</code></td>
+<td>Sold-To Party</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>BP</code> / <code>PY</code></td>
+<td>Bill-To / Payer</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>1A</code>–<code>1D</code></td>
+<td>Customer hierarchy 1–4</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td><code>KB</code> / <code>KM</code></td>
+<td>Credit rep. / Credit manager</td>
+<td><code>A</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Source <code>C</code></strong> significa que o sistema busca esses parceiros no <strong>próprio contrato</strong>, não no cadastro do BP. É exatamente isso que permite ao Amadeus 34 fazer release order sem estar vinculado ao BP do Galileo-Bikes.</p>
+</blockquote>
+<h3>🔧 Controle "soft" ao exceder o target value (Passo 15)</h3>
+<p>Pop-up recebido ao salvar o pedido <code>448</code>:</p>
+<pre><code>Value contract release
+  Target value of value contract has been exceeded!
+  Value contract: 0040000017, Item: 000010
+  Difference rate: 2.140,00 EUR
+  Do you still wish to save the document or continue to edit?
+  [ Save ]  [ Edit ]  [ Cancel ]
+</code></pre>
+<p><strong>Ponto crítico:</strong> o sistema <strong>oferece o botão Save</strong>. Este é um controle de <strong>aviso</strong>, não de bloqueio — comportamento definido por <code>Contract Release Ctrl = A</code> na item category <code>WKN</code>.</p>
+<blockquote>
+<p>Contraste importante: um <strong>credit block</strong> é controle "hard" (impede o salvamento / bloqueia a entrega). Excesso de target value em value contract é "soft" (avisa e deixa passar). Confundir os dois é erro comum em análise de chamado.</p>
+</blockquote>
+<h3>✅ Diagnóstico AMS — Value Contracts</h3>
+<p><strong>Cenário 1 — "vendemos acima do valor contratado e o sistema deixou"</strong>
+→ Comportamento esperado com <code>Contract Release Ctrl = A</code>. Se o negócio exige bloqueio, é mudança de customizing na item category <code>WKN</code>, não bug.</p>
+<p><strong>Cenário 2 — "o vendedor conseguiu vender produto fora do escopo do contrato"</strong>
+→ Falta assortment module ou product hierarchy atribuída ao contrato. Verificar campo <strong>Assortment Module</strong> no item (<code>VA43</code>).</p>
+<p><strong>Cenário 3 — "não consigo copiar o material do contrato para o pedido"</strong>
+→ Comportamento esperado: <code>WKM1</code> é material de controle. Verificar <code>Cont. Item Copy Mode</code> (<code>VTAA</code>, Target OR / Source WK1, item WKN).</p>
+<p><strong>Cenário 4 — "cliente reclama que a filial não consegue fazer pedido contra o contrato"</strong>
+→ Verificar parceiros <code>AA</code>/<code>AW</code> no header do contrato (<code>VA42</code> → Goto → Header → Partner) e o procedimento <code>KAB</code>.</p>
+<hr />
+<h2>UNIT 3 — Maintain Contract Data in a Sales Document (Exercício 4)</h2>
+<h3>Conceito</h3>
+<p>Contratos de aluguel (<code>MV</code>) e de serviço usam um <strong>contract profile</strong> atribuído no customizing do tipo de documento. Esse profile preenche automaticamente todas as regras de vigência, duração, renovação e cancelamento — nada é digitado pelo usuário.</p>
+<h3>Criação (<code>VA41</code>)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contract type</td>
+<td><code>MV</code></td>
+</tr>
+<tr>
+<td>Sales Area</td>
+<td><code>1010 / 10 / 00</code></td>
+</tr>
+<tr>
+<td>Sold-to party</td>
+<td><code>C605-B34</code></td>
+</tr>
+<tr>
+<td>Cust Reference</td>
+<td><code>34MV</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Contrato criado:</strong> <code>40000018</code></p>
+<h3>Dados de contrato preenchidos automaticamente</h3>
+<p><code>Goto → Header → Contract data</code></p>
+<p><strong>Seção Val.period:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+<th>Regra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contract Start Date</td>
+<td><code>30.07.2026</code></td>
+<td><strong>Today's Date</strong></td>
+</tr>
+<tr>
+<td>Contract end date</td>
+<td><code>29.07.2027</code></td>
+<td><code>08</code> — <strong>Contract Start Date + Contract Validity</strong></td>
+</tr>
+<tr>
+<td>Val.Period.Category</td>
+<td><code>02</code></td>
+<td><strong>1 year</strong></td>
+</tr>
+<tr>
+<td>Contract Val.Period</td>
+<td><code>1</code> (Year)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Installation Date</td>
+<td><em>(vazio)</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Contract Signed</td>
+<td><em>(vazio)</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td><code>0004</code></td>
+<td><strong>Create sales act.</strong></td>
+</tr>
+<tr>
+<td><strong>Action date</strong></td>
+<td><code>29.06.2027</code></td>
+<td><code>19</code> — <strong>End of Contract − 1 Month</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Seção Termination:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cancellation Proced.</strong></td>
+<td><code>0001</code> — <strong>Cancl to ValidPrdEnd, yrly withdrwlRight</strong></td>
+</tr>
+<tr>
+<td>Reason for Cancel.</td>
+<td><em>(vazio)</em></td>
+</tr>
+<tr>
+<td>Receipt of Canc. / Cancellation Party</td>
+<td><em>(vazio)</em></td>
+</tr>
+<tr>
+<td>Req.Cancellat.Date / Date of Canc.Doc.</td>
+<td><em>(vazio)</em></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Campos de Termination vazios = <strong>nenhum cancelamento ativo</strong>. Não é erro nem pendência.</p>
+</blockquote>
+<h3>✅ Diagnóstico AMS — Rental / Service Contracts</h3>
+<p><strong>O par <code>Action</code> + <code>Action date</code> é o gatilho de renovação.</strong> Com <code>0004 Create sales act.</code> e regra <code>19</code> (End of Contract − 1 Month), o sistema gera automaticamente uma atividade de vendas 1 mês antes do vencimento, para o vendedor contatar o cliente.</p>
+<p><strong>Cenário real:</strong> <em>"o contrato do cliente venceu e ninguém foi avisado"</em>
+→ Causa raiz típica: campo <code>Action</code> vazio no contract profile, ou regra de <code>Action date</code> mal configurada. Verificar o contract profile atribuído ao tipo de documento no SPRO.</p>
+<p><strong>Cenário real:</strong> <em>"cancelamos o contrato mas continua ativo"</em>
+→ Verificar <code>Cancellation Procedure</code>. Com <code>0001</code>, o cancelamento só produz efeito no <strong>fim do período de validade</strong> — não é imediato. Cliente muitas vezes espera efeito imediato.</p>
+<hr />
+<h2>🎯 Resumo executivo — 8 aprendizados para levar à prova</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Aprendizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Pedido <strong>sem referência</strong> ao contrato não consome saldo <strong>nem herda condições</strong>. Condição inserida manualmente no contrato não existe como registro mestre.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Contrato <strong><code>Completed</code></strong> deixa de ser oferecido <strong>silenciosamente</strong> — sem erro, sem aviso. Causa raiz oculta de "o desconto parou de funcionar".</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong><code>Assign Contract → Item</code></strong> depende de rota em <strong>Copy Control (<code>VTAA</code>)</strong>. Tipos <code>Z*</code> customizados frequentemente não têm.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong><code>Outline agrmt mess. = F</code></strong> (Define Sales Document Types) força a lista de seleção — mas só com contrato em aberto.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Item Category de value contract vem do <strong>usage <code>VCTR</code></strong> → <code>WKN</code>. Material <code>WKM1</code> é fictício e <strong>não copiável</strong> (<code>Cont. Item Copy Mode = A</code>).</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Excesso de <strong>target value</strong> é controle <strong>soft</strong> (<code>Contract Release Ctrl = A</code>): avisa e permite salvar. ≠ credit block (hard).</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Funções <strong><code>AA</code>/<code>AW</code></strong> com <strong>Source <code>C</code></strong> buscam parceiro no <strong>contrato</strong>, não no BP — habilita release por terceiros autorizados (procedimento <code>KAB</code>).</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Contract profile</strong> (<code>MV</code>) preenche start/end/duration/cancelamento automaticamente. Par <strong><code>Action</code> + <code>Action date</code></strong> é o gatilho de renovação.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>📚 Referência técnica — transações e caminhos SPRO</h2>
+<h3>Transações usadas</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tcode</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VA41</code> / <code>VA42</code> / <code>VA43</code></td>
+<td>Criar / alterar / exibir contrato (WK1, MV)</td>
+</tr>
+<tr>
+<td><code>VA01</code> / <code>VA02</code></td>
+<td>Criar / alterar pedido de venda (release order)</td>
+</tr>
+<tr>
+<td><code>WSV2</code></td>
+<td>Criar Value Contract – Assortment Module</td>
+</tr>
+<tr>
+<td><code>SPRO</code></td>
+<td>Customizing</td>
+</tr>
+<tr>
+<td><code>VTAA</code></td>
+<td>Copying Control: Sales Document → Sales Document</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Apps Fiori usados</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manage Sales Inquiries</td>
+<td>Criar/exibir inquiries</td>
+</tr>
+<tr>
+<td>Manage Sales Quotations</td>
+<td>Criar cotações, Document Flow</td>
+</tr>
+<tr>
+<td>Manage Sales Contracts</td>
+<td>Criar contrato KM, Create Subsequent Order</td>
+</tr>
+<tr>
+<td>Create Sales Orders / VA01</td>
+<td>Criar release orders</td>
+</tr>
+<tr>
+<td>Manage Sales Orders</td>
+<td>Alterar pedido, Assign Contract</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Caminhos SPRO consolidados</h3>
+<pre><code>Define Sales Document Types (Outline agrmt mess., Quotation messages)
+  SD → Sales → Sales Documents → Sales Document Header
+     → Define Sales Document Types
+
+Assign Item Categories (determinação WKN via VCTR)
+  SD → Sales → Sales Documents → Sales Document Item
+     → Assign Item Categories
+
+Define Item Categories for Value Contract (WKM1, Contract Release Ctrl)
+  SD → Sales → Sales Documents → Contracts → Value Contract
+     → Define Item Categories for Value Contract and Contract Rel.
+
+Copying Control for Value Contract (Cont. Item Copy Mode)
+  SD → Sales → Sales Documents → Contracts → Value Contract
+     → Copying Control for Value Contract
+
+Partner Determination (procedimento KAB, funções AA/AW)
+  SD → Basic Functions → Partner Determination
+     → Set Up Partner Determination
+     → Set Up Partner Determination for Sales Document Header
+</code></pre>
+<h3>Tipos de documento de contrato — visão comparativa</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Nome</th>
+<th>Controla</th>
+<th>Item Category</th>
+<th>Particularidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KM</code></td>
+<td>Quantity Contract</td>
+<td><strong>Quantidade</strong> (Target Qty)</td>
+<td><code>KMN</code></td>
+<td>Material real no contrato</td>
+</tr>
+<tr>
+<td><code>WK1</code></td>
+<td>Value Contract – Gen.</td>
+<td><strong>Valor</strong> (Target Value)</td>
+<td><code>WKN</code></td>
+<td>Material fictício <code>WKM1</code>; restrição via assortment</td>
+</tr>
+<tr>
+<td><code>WK2</code></td>
+<td>Value Contract – Matl</td>
+<td>Valor, material específico</td>
+<td><code>WKC</code></td>
+<td>Material real definido no contrato</td>
+</tr>
+<tr>
+<td><code>MV</code></td>
+<td>Rental Contract</td>
+<td>Vigência/duração</td>
+<td>—</td>
+<td>Contract profile automático</td>
+</tr>
+<tr>
+<td><code>WV</code></td>
+<td>Service &amp; Maintenance</td>
+<td>Vigência/duração</td>
+<td><code>WVN</code></td>
+<td>Contract profile automático</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Documento gerado em 29/07/2026 — prática executada no ambiente de treinamento SAP, grupo 34.</em></p>
+</div></article>
+<footer><div class="wrap">
+  <span>Documentação autoral · ambiente de treinamento SAP</span>
+  <span><a href="index.html">← todos os módulos</a></span>
+</div></footer>
+</body>
+</html>

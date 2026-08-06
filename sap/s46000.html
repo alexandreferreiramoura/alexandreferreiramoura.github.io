@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S46000 — Fundamentos de Vendas · Alexandre Ferreira Moura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
+--sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;font-size:15.5px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+.topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
+.pagehead{padding:44px 0 34px;border-bottom:1px solid var(--line);background:var(--paper)}
+.pagehead .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sys);margin-bottom:10px}
+.pagehead h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.015em;line-height:1.15}
+.pagehead .sub{color:var(--ink-soft);margin-top:8px;font-size:.95rem}
+article{padding:44px 0 70px}
+article h1{display:none}
+article h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:46px 0 16px;padding-top:22px;border-top:1px solid var(--line)}
+article h2:first-child{margin-top:0;border-top:none;padding-top:0}
+article h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:30px 0 10px}
+article h4{font-weight:600;font-size:.95rem;margin:22px 0 8px}
+article p{margin-bottom:14px}
+article ul,article ol{margin:0 0 16px 22px}
+article li{margin-bottom:6px}
+article strong{font-weight:600}
+article em{color:var(--ink-soft)}
+article hr{border:none;border-top:1px solid var(--line);margin:36px 0}
+article blockquote{border-left:3px solid var(--ops);background:var(--paper);padding:12px 18px;margin:0 0 16px;color:var(--ink-soft);border-radius:0 8px 8px 0}
+article code{font-family:var(--mono);font-size:.83em;background:var(--sys-soft);color:#094F9E;padding:2px 6px;border-radius:4px}
+article pre{background:#0F1C2B;color:#D8E4F0;padding:18px 20px;border-radius:10px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.6}
+article pre code{background:none;color:inherit;padding:0}
+article table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem;background:var(--paper);border-radius:8px;overflow:hidden}
+article th{background:var(--ink);color:#fff;text-align:left;padding:10px 14px;font-weight:600;font-size:.82rem}
+article td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+article tr:last-child td{border-bottom:none}
+.tablewrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:8px}
+.tablewrap table{margin:0;border-radius:0}
+footer{border-top:1px solid var(--line);padding:34px 0 60px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
+@media(max-width:640px){article table{font-size:.8rem}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="name">Alexandre Ferreira Moura</span>
+  <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
+</div></div>
+<div class="pagehead"><div class="wrap">
+  <p class="eyebrow">Prática hands-on · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <h1>S46000 — Fundamentos de Vendas</h1>
+  <p class="sub">15 exercícios · Ciclo O2C, dados mestre, pré-venda, análises</p>
+</div></div>
+<article><div class="wrap">
+<h1>S46000 — Explorando os Fundamentos de Vendas</h1>
+<h2>Banco de Aprendizado — Prática Hands-on (SAP S/4HANA 2025)</h2>
+<p><strong>Aluno:</strong> Alexandre Ferreira Moura
+<strong>Sistema de prática:</strong> ambiente de treinamento SAP S/4HANA 2025 (SAP Learning Hub), Client 400
+<strong>Login usado:</strong> usuário de treinamento (grupo 88)
+<strong>Grupo (##):</strong> 88
+<strong>Trilha:</strong> C_TS462 — SAP Certified Associate, SAP S/4HANA Cloud Private Edition, Sales
+<strong>Status:</strong> ✅ Concluído (Units 1 a 3 + Exercícios 12-15)</p>
+<hr />
+<h2>📌 Objetos-chave criados nesta prática</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business Partner (Sold-to)</td>
+<td><strong>TCUS-88</strong></td>
+<td>"BIKE-BELLO 88" — criado do zero, Sales Area 1010/10/00</td>
+</tr>
+<tr>
+<td>Ship-to adicional</td>
+<td><strong>C600-A88</strong></td>
+<td>Vinculado a TCUS-88 como parceiro SH</td>
+</tr>
+<tr>
+<td>Material (view de vendas criada)</td>
+<td><strong>P600-Z88</strong></td>
+<td>Delivering Plant 1010, Tax Classification 1, Sales Text</td>
+</tr>
+<tr>
+<td>Material (usado em pedidos)</td>
+<td><strong>P600-188</strong></td>
+<td>Já existente no sistema</td>
+</tr>
+<tr>
+<td>Sales Order</td>
+<td><strong>396</strong></td>
+<td>Ciclo O2C completo (Unit 2)</td>
+</tr>
+<tr>
+<td>Outbound Delivery</td>
+<td><strong>80000175</strong></td>
+<td>GI postado, doc. material 4900006800</td>
+</tr>
+<tr>
+<td>Invoice</td>
+<td><strong>90000134</strong></td>
+<td>5.100,00 EUR, journal entry 1800000504</td>
+</tr>
+<tr>
+<td>Sales Order</td>
+<td><strong>400</strong></td>
+<td>Testou não-propagação de payment terms (ZB00 mantido)</td>
+</tr>
+<tr>
+<td>Sales Order</td>
+<td><strong>401</strong></td>
+<td>Testou PR00 + K007 (2 itens)</td>
+</tr>
+<tr>
+<td>Sales Order</td>
+<td><strong>402</strong></td>
+<td>Standard Order via referência à Quotation</td>
+</tr>
+<tr>
+<td>Sales Order</td>
+<td><strong>403</strong></td>
+<td>Testou Billing Block "Calculation Missing"</td>
+</tr>
+<tr>
+<td>Inquiry</td>
+<td><strong>10000013</strong></td>
+<td>Material P600-188, qtd 5</td>
+</tr>
+<tr>
+<td>Quotation</td>
+<td><strong>20000005</strong></td>
+<td>Referência à Inquiry, qtd reduzida para 3</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>UNIT 1 — Navegação e Conceitos Organizacionais (Exercícios 1-3)</h2>
+<h3>O que foi feito</h3>
+<ul>
+<li>Navegação no <strong>SAP Fiori Launchpad</strong></li>
+<li>Configuração de <strong>valores default</strong>: Sales Organization <strong>1010</strong>, Distribution Channel <strong>10</strong>, Division <strong>00</strong></li>
+<li>Revisão conceitual da estrutura organizacional de vendas</li>
+</ul>
+<h3>🔧 Pegadinha identificada e corrigida</h3>
+<p>Confusão inicial entre <strong>Sales Organization</strong>, <strong>Division</strong> e <strong>Plant</strong> — são três dimensões distintas:</p>
+<pre><code>Sales Organization → entidade comercial responsável pela venda
+Distribution Channel → canal de venda (ex: direto, atacado)
+Division → linha de produto/negócio
+Plant → centro físico de produção/armazenagem (logística, não vendas)
+</code></pre>
+<h3>✅ Diagnóstico AMS</h3>
+<p>Erro comum em ambiente real: confundir Division (dimensão de vendas) com Plant (dimensão logística) ao configurar Sales Area de um novo cliente — gera bloqueio de inserção de item no pedido.</p>
+<hr />
+<h2>UNIT 2 — Ciclo Order-to-Cash Completo (Exercícios 4-8)</h2>
+<h3>Sequência executada</h3>
+<pre><code>Sales Order 396 (VA01)
+  → Sold-to: C600-A88
+  → Materiais: T-D188 (qtd 1) + P600-188 (qtd 1)
+       ↓
+Outbound Delivery 80000175 (VL01N)
+  → Picking realizado
+  → Post Goods Issue (PGI) confirmado
+  → Documento de material: 4900006800
+  → Redução de estoque confirmada
+       ↓
+Invoice 90000134 (VF01)
+  → Valor líquido: 5.100,00 EUR
+       ↓
+Journal Entry 1800000504
+  → Lançado, status &quot;Not Cleared&quot; (aguardando pagamento)
+</code></pre>
+<h3>✅ Diagnóstico AMS</h3>
+<ul>
+<li>Ciclo completo O2C é a base de qualquer investigação de chamado AMS: "onde travou?" sempre remonta essa cadeia (Order → Delivery → PGI → Invoice → Accounting).</li>
+<li>"Not Cleared" no journal entry é esperado — significa que o título está em aberto, não é erro.</li>
+</ul>
+<hr />
+<h2>UNIT 3 — Dados Mestre (Exercícios 9-11)</h2>
+<h3>Exercise 9 — Criar Business Partner</h3>
+<ul>
+<li><strong>App:</strong> Manage Business Partner Master Data</li>
+<li>BP <strong>TCUS-88</strong> ("Biko-Bello 88") criado do zero</li>
+<li>Sales Area: <strong>1010/10/00</strong></li>
+</ul>
+<h3>🔧 Erro cometido e autocorrigido</h3>
+<p>Campo <strong>Division</strong> preenchido com <code>10</code> em vez de <code>00</code> — identificado e corrigido pelo próprio aluno (bom sinal de compreensão do conceito Unit 1). Também ocorreu um <strong>erro de runtime 500</strong> durante edição de partner function, resolvido com nova tentativa.</p>
+<h3>Exercise 10 — Efeitos de Mudança em Customer Master Data</h3>
+<p><strong>Passo 1 — Ship-to adicional:</strong></p>
+<pre><code>Manage Customer Master Data → TCUS-88 → Edit → Sales Areas (1010/10/00)
+→ Partner Functions → Create
+   Partner Role: SH (Ship-to party)
+   Partner Number: C600-A88
+→ Apply → Save
+</code></pre>
+<p><strong>Passo 2 — Teste em pedido novo:</strong></p>
+<pre><code>VA01 → OR / 1010 / 10 / 00
+Sold-to: TCUS-88 | Ship-to: C600-A88
+Customer reference: work88
+Material: P600-188, qtd 2
+</code></pre>
+<p><strong>Passo 3 — Regra crítica confirmada:</strong>
+Alteração de payment terms no cadastro (ZB00 → ZB03) <strong>não retroage</strong> em pedidos já criados — pedido 400 manteve <strong>ZB00</strong>, mesmo após mudança no cadastro.</p>
+<h3>✅ Diagnóstico AMS</h3>
+<ul>
+<li>Cenário real: "cliente pede entrega em endereço diferente do faturamento" → resolvido com Ship-to alternativo vinculado ao Sold-to.</li>
+<li><strong>Regra geral de não-retroatividade</strong> (payment terms, preços, etc.): mudanças em dados mestre só valem para documentos <strong>criados depois</strong> da mudança. Documentos existentes precisam de atualização manual (ex: VA02 → Update).</li>
+</ul>
+<h3>Exercise 11 — Views de Vendas do Material</h3>
+<pre><code>Manage Product Master (ou MM03) → Material P600-Z88 → Create/Edit
+Views: Sales: Sales Org. Data 1
+   Delivering Plant: 1010
+   Tax Classification: 1
+   Sales Text: preenchido
+</code></pre>
+<hr />
+<h2>EXERCISE 12 — Criar Preço de Material (PR00) e Desconto de Cliente (K007)</h2>
+<h3>App usado: Manage Prices - Sales</h3>
+<p><strong>PR00 (Preço do material P600-Z88):</strong></p>
+<pre><code>Filtros: Condition Type PR00 | Key Combination 304/Material with Release Status
+   Sales Org 1010 | Distribution Channel 10 | Product P600-Z88
+Registro criado: Amount 2.000 EUR | Pricing Unit 1 PC | Valid To 31.12.9999
+</code></pre>
+<p><strong>K007 (Desconto de cliente TCUS-A88):</strong></p>
+<pre><code>Filtros: Condition Type K007 | Key Combination Customer with Release Status (307)
+   Sales Org 1010 | Distribution Channel 10 | Customer TCUS-A88
+Registro criado: Amount 40% | Valid To 31.12.9999
+</code></pre>
+<h3>🔧 Erro cometido e corrigido</h3>
+<p>Primeira tentativa de K007 gerou registro <strong>sem Condition Table</strong> (Key Combination errada escolhida antes do Create) → registro descartado (Delete) e recriado com a Key Combination correta ("Customer with Release Status").</p>
+<h3>Teste no Sales Order 401 (2 itens)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Material</th>
+<th>Qtd</th>
+<th>PR00</th>
+<th>K007</th>
+<th>Net Value</th>
+<th>Total (c/ tax)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>P600-188</td>
+<td>2</td>
+<td>1.000 EUR/PC → 2.000 EUR</td>
+<td>-40% → -800 EUR</td>
+<td>1.200 EUR</td>
+<td>1.320 EUR</td>
+</tr>
+<tr>
+<td>2</td>
+<td>P600-Z88</td>
+<td>2</td>
+<td>2.000 EUR/PC → 4.000 EUR</td>
+<td>-40% → -1.600 EUR</td>
+<td>2.400 EUR</td>
+<td>2.640 EUR</td>
+</tr>
+</tbody>
+</table></div>
+<h3>✅ Diagnóstico AMS</h3>
+<ul>
+<li>App "Manage Prices - Sales" substitui VK11/12/13 na prática, mas a lógica de Key Combination/Condition Table por trás é a mesma.</li>
+<li>K007 se aplicou automaticamente em <strong>ambos os itens</strong> do pedido — confirma que desconto por cliente vale para qualquer material, diferente de um desconto por cliente+material específico.</li>
+</ul>
+<hr />
+<h2>EXERCISE 13 — Documentos de Pré-venda (Ciclo Completo)</h2>
+<h3>Sequência executada</h3>
+<pre><code>Inquiry 10000013 (VA01, tipo IN)
+   Sold-to: TCUS-88 | Material P600-188 | Qtd 5
+        ↓ Create with Reference
+Quotation 20000005 (Manage Sales Quotations - Version 2)
+   Customer Reference: 88qtsales1 | Valid To: 11.08.2026
+   Qtd reduzida para 3 PC (de 5)
+        ↓ Create with Reference (via VA01)
+Standard Order 402
+   Qtd reduzida para 1 PC (de 3)
+</code></pre>
+<h3>Resultado no Document Flow</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Qtd</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inquiry 10000013</td>
+<td>5 PC</td>
+<td><strong>Completed</strong></td>
+</tr>
+<tr>
+<td>Quotation 20000005</td>
+<td>3 PC</td>
+<td><strong>In Process</strong> (só 1 de 3 referenciado)</td>
+</tr>
+<tr>
+<td>Standard Order 402</td>
+<td>1 PC</td>
+<td><strong>Open</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>✅ Diagnóstico AMS — Regra crítica confirmada na prática</h3>
+<pre><code>Regra A (Inquiry → Quotation): fecha com QUALQUER referência parcial
+   → mesmo copiando só 3 de 5, a Inquiry já ficou &quot;Fully Referenced&quot;/&quot;Completed&quot;
+
+Regra B (Quotation → Order): só fecha quando TODA a quantidade for referenciada
+   → copiando só 1 de 3, a Quotation ficou &quot;In Process&quot; (não fechou)
+</code></pre>
+<p>Essa assimetria é pegadinha clássica de prova e de chamado AMS ("por que a cotação não fecha mesmo já tendo virado pedido parcial?").</p>
+<hr />
+<h2>EXERCISE 14 — Sales Order Fulfillment App</h2>
+<h3>Passo 1 — Criar pedido com bloqueio proposital</h3>
+<pre><code>VA01 → OR / 1010 / 10 / 00
+Sold-to: TCUS-88 | Customer reference: issue-88
+Requested delivery date: hoje + 10 dias
+Material: P600-188 | Qtd 5
+Billing Block: Calculation Missing
+→ Pedido 403 salvo
+</code></pre>
+<h3>🔧 Aviso do sistema</h3>
+<p>Ao inserir o material, apareceu popup <strong>"Open quotations for item"</strong> (cotações abertas para o material, sobra da Quotation 20000005) — resolvido com <strong>Continue</strong> (pedido independente, não precisa referenciar).</p>
+<h3>Passo 2 — Resolver via app</h3>
+<pre><code>App: Sales Order Fulfillment - Analyze and Resolve Issues
+Filtro: Sold-to Party = TCUS-88
+Pedido 403 apareceu com 2 issues: &quot;Billing Block&quot; + &quot;Delivery Issue&quot;
+→ Remove All Billing Blocks aplicado
+→ Billing Block resolvido; Delivery Issue permaneceu (fora do escopo do exercício)
+</code></pre>
+<h3>✅ Diagnóstico AMS</h3>
+<p>Esse app centraliza billing block, delivery block e dados incompletos numa visão só — evita ter que abrir VA02 item por item para diagnosticar por que um pedido não fatura.</p>
+<hr />
+<h2>EXERCISE 15 — Analytics: Incoming Sales Orders - Flexible Analysis</h2>
+<h3>Passos executados</h3>
+<pre><code>1. Display Currency: EUR
+2. Filtro de Measure: Incoming Orders
+3. Filtro de período: Yr/Mo. of Creation = 07.2026
+   → Total geral: 1.991.407,00 EUR (Sales Org 1010, todos os alunos do grupo)
+4. Drilldown: Add Drilldown → Sold-to Party
+   → Vários clientes de outros alunos apareceram (ex: NISHU2 = 1.746.000 EUR)
+5. Filtro adicional: Sold-to Party = TCUS-88
+   → Isolado: 9.200,00 EUR (só os pedidos do próprio aluno)
+6. Sort → Key Figure Value Descending
+7. Navigate to → Manage Sales Orders
+   → Resultado: &quot;No navigation targets available&quot; (limitação do ambiente trial)
+8. Graphical Display → gráfico de barras já veio configurado por padrão
+9. Export → Microsoft Excel (testado, sem salvar arquivo)
+</code></pre>
+<h3>✅ Diagnóstico AMS</h3>
+<ul>
+<li>Multidimensional reporting nativo do S/4HANA (via HANA in-memory) permite drilldown em tempo real sem precisar de data warehouse externo — diferencial-chave sobre ERPs tradicionais.</li>
+<li>Filtrar por Sold-to Party é essencial em ambiente de treinamento compartilhado, para isolar apenas os próprios dados.</li>
+</ul>
+<hr />
+<h2>🔗 Paralelo SAP S/4HANA SD ↔ TOTVS Protheus (registrado nesta sessão)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Conceito SAP</th>
+<th>Equivalente Protheus</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business Partner (BP)</td>
+<td>Cadastro de Cliente (SA1)</td>
+<td>SAP unifica Cliente/Fornecedor num cadastro só (BP/CVI); Protheus separa em SA1/SA2</td>
+</tr>
+<tr>
+<td>Material Master (MM03)</td>
+<td>Cadastro de Produto (SB1)</td>
+<td>SAP segmenta em "views" por Sales Area/Plant; Protheus concentra mais no mesmo cadastro</td>
+</tr>
+<tr>
+<td>PR00 (Preço Base)</td>
+<td>Tabela de Preço</td>
+<td>SAP resolve dinamicamente via técnica de condição (sequência de acesso); Protheus amarra a uma tabela vinculada ao pedido</td>
+</tr>
+<tr>
+<td>K007 (Desconto Cliente)</td>
+<td>Desconto no cadastro/pedido</td>
+<td>SAP trata como registro de condição independente, somado automaticamente; Protheus geralmente aplica manual ou via condição comercial simples</td>
+</tr>
+<tr>
+<td>Sales Area (Org/Canal/Divisão)</td>
+<td>Filial</td>
+<td>SAP quebra em 3 dimensões; Protheus usa a Filial como unidade organizacional única</td>
+</tr>
+<tr>
+<td>Inquiry → Quotation → Order</td>
+<td>Sem equivalente formal nativo</td>
+<td>SAP tem documento de cotação vinculante com validade; Protheus normalmente vai direto ao Pedido, sem esse fluxo estruturado</td>
+</tr>
+<tr>
+<td>Completion Rules (A/B)</td>
+<td>Sem equivalente</td>
+<td>Controle de status de referência entre documentos; no Protheus seria via campo/status customizado</td>
+</tr>
+<tr>
+<td>Billing Block</td>
+<td>Bloqueio de Pedido</td>
+<td>SAP nativo por tipo de documento; Protheus geralmente via customização/workflow</td>
+</tr>
+<tr>
+<td>Sales Order Fulfillment Issues</td>
+<td>Relatório customizado</td>
+<td>SAP centraliza bloqueios num app Fiori; Protheus exigiria relatório sob medida</td>
+</tr>
+<tr>
+<td>Flexible Analysis (drilldown nativo)</td>
+<td>BI externo (TOTVS BI / Power BI)</td>
+<td>SAP embute análise multidimensional in-memory; Protheus depende de ferramenta de BI acoplada</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Insight-chave:</strong> no Protheus, boa parte da lógica de preço/bloqueio/fluxo é resolvida em <strong>código customizado (ADVPL)</strong>. No SAP, é resolvida por <strong>configuração declarativa</strong> (SPRO + registros de condição) — o motor de precificação/determinação consulta tabelas configuradas, sem precisar programar a regra.</p>
+<hr />
+<h2>📋 Checklist final — S46000 100% concluído</h2>
+<pre><code>□ Navegação Fiori Launchpad + defaults organizacionais
+□ Ciclo O2C completo (Order → Delivery → PGI → Invoice → Accounting)
+□ Business Partner criado com Sales Area
+□ Ship-to Party adicional vinculado
+□ Regra de não-retroatividade de dados mestre confirmada na prática
+□ Views de vendas de material criadas
+□ PR00 + K007 cadastrados e testados em pedido com múltiplos itens
+□ Ciclo de pré-venda completo (Inquiry → Quotation → Order) com Completion Rules testadas
+□ Billing Block criado e resolvido via app Fulfillment Issues
+□ Análise multidimensional com drilldown, filtro, gráfico e export Excel
+</code></pre>
+<hr />
+<p><em>Documento gerado em 28/07/2026 | Consolidação de duas sessões de prática (chats "Iniciando práticas do sistema S46000" + continuação) | Sistema ambiente de treinamento SAP S/4HANA 2025 (SAP Learning Hub), Client 400, grupo 88</em></p>
+</div></article>
+<footer><div class="wrap">
+  <span>Documentação autoral · ambiente de treinamento SAP</span>
+  <span><a href="index.html">← todos os módulos</a></span>
+</div></footer>
+</body>
+</html>

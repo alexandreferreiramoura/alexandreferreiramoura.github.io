@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S46056 — Controle de Texto · Alexandre Ferreira Moura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
+--sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;font-size:15.5px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+.topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
+.pagehead{padding:44px 0 34px;border-bottom:1px solid var(--line);background:var(--paper)}
+.pagehead .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sys);margin-bottom:10px}
+.pagehead h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.015em;line-height:1.15}
+.pagehead .sub{color:var(--ink-soft);margin-top:8px;font-size:.95rem}
+article{padding:44px 0 70px}
+article h1{display:none}
+article h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:46px 0 16px;padding-top:22px;border-top:1px solid var(--line)}
+article h2:first-child{margin-top:0;border-top:none;padding-top:0}
+article h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.05rem;margin:30px 0 10px}
+article h4{font-weight:600;font-size:.95rem;margin:22px 0 8px}
+article p{margin-bottom:14px}
+article ul,article ol{margin:0 0 16px 22px}
+article li{margin-bottom:6px}
+article strong{font-weight:600}
+article em{color:var(--ink-soft)}
+article hr{border:none;border-top:1px solid var(--line);margin:36px 0}
+article blockquote{border-left:3px solid var(--ops);background:var(--paper);padding:12px 18px;margin:0 0 16px;color:var(--ink-soft);border-radius:0 8px 8px 0}
+article code{font-family:var(--mono);font-size:.83em;background:var(--sys-soft);color:#094F9E;padding:2px 6px;border-radius:4px}
+article pre{background:#0F1C2B;color:#D8E4F0;padding:18px 20px;border-radius:10px;overflow-x:auto;margin:0 0 18px;font-size:.82rem;line-height:1.6}
+article pre code{background:none;color:inherit;padding:0}
+article table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem;background:var(--paper);border-radius:8px;overflow:hidden}
+article th{background:var(--ink);color:#fff;text-align:left;padding:10px 14px;font-weight:600;font-size:.82rem}
+article td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+article tr:last-child td{border-bottom:none}
+.tablewrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:8px}
+.tablewrap table{margin:0;border-radius:0}
+footer{border-top:1px solid var(--line);padding:34px 0 60px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
+@media(max-width:640px){article table{font-size:.8rem}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="name">Alexandre Ferreira Moura</span>
+  <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
+</div></div>
+<div class="pagehead"><div class="wrap">
+  <p class="eyebrow">Prática hands-on · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <h1>S46056 — Controle de Texto</h1>
+  <p class="sub">Customizing completo · Determinação e diagnóstico de textos</p>
+</div></div>
+<article><div class="wrap">
+<h1>S46056 — Configurando o Controle de Texto (Text Control)</h1>
+<h2>Banco de Aprendizado — Prática Hands-on (SAP S/4HANA 2025)</h2>
+<p><strong>Aluno:</strong> Alexandre Ferreira Moura
+<strong>Sistema de prática:</strong> ambiente de treinamento SAP S/4HANA 2025 (SAP Learning Hub), Client 400
+<strong>Login usado:</strong> usuário de treinamento (grupo 11)
+<strong>Grupo (##):</strong> 11
+<strong>Course Version:</strong> 2510
+<strong>Trilha:</strong> C_TS462 — SAP Certified Associate, SAP S/4HANA Cloud Private Edition, Sales
+<strong>Status:</strong> ✅ Concluído (1 exercício / 2 Units — Unit 1 conceitual, Unit 2 prática)
+<strong>Data da prática:</strong> 29/07/2026
+<strong>Duração real:</strong> ~1h30 (exercício previsto em 20 min — o excedente foi diagnóstico de causa raiz, o mais valioso da sessão)</p>
+<hr />
+<h2>📌 Objetos-chave criados nesta prática</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Código</th>
+<th>Descrição / Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text Determination Procedure</strong></td>
+<td><strong>12</strong></td>
+<td><code>Header Text–Gr11</code> — cópia do procedimento padrão <code>01</code></td>
+</tr>
+<tr>
+<td><strong>Access Sequence</strong></td>
+<td><strong>9011</strong></td>
+<td><code>ACESS SEQUENCE GR11</code> — acesso 010 → VBBK / Y001 / All Lang. / Req. 1</td>
+</tr>
+<tr>
+<td>Atribuição procedimento → doc. type</td>
+<td><code>ZA11 → TxtDe 12</code></td>
+<td>Trade Fair11-Order</td>
+</tr>
+<tr>
+<td>Cotação (1ª tentativa)</td>
+<td><strong>20000020</strong></td>
+<td>❌ Texto gravado no tipo <strong>errado</strong> (Form Header 0001) — gerou o diagnóstico</td>
+</tr>
+<tr>
+<td>Pedido ZA11 (1ª tentativa)</td>
+<td><strong>400</strong></td>
+<td>❌ Y001 vazio — falha reproduzida e diagnosticada</td>
+</tr>
+<tr>
+<td>Cotação (teste válido)</td>
+<td><strong>20000021</strong></td>
+<td>✅ Texto no Y001 correto, Cust.Ref <code>REF-11A</code></td>
+</tr>
+<tr>
+<td>Pedido ZA11 (teste válido)</td>
+<td><strong>401</strong></td>
+<td>✅ Y001 <strong>copiado automaticamente</strong> da cotação</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Observação de aprendizado:</strong> os objetos 20000020 / 400 são os mais valiosos desta prática. Foram eles que produziram o erro real e o exercício completo de diagnóstico via Análise de Determinação de Texto.</p>
+</blockquote>
+<h3>Dados mestre do grupo 11</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sold-to Party</td>
+<td><code>C700-C11</code></td>
+<td>North Sea Energy – H2 Power – 11 (Emden, DE — <strong>idioma EN</strong>)</td>
+</tr>
+<tr>
+<td>Material</td>
+<td><code>P605-111</code></td>
+<td>Alpha-Bike 11 — 300,00 EUR/PC (via PPR0)</td>
+</tr>
+<tr>
+<td>Doc. type customizado</td>
+<td><code>ZA11</code></td>
+<td>Trade Fair11-Order</td>
+</tr>
+<tr>
+<td>Quotation type</td>
+<td><code>QT</code></td>
+<td>Cotação padrão</td>
+</tr>
+<tr>
+<td>Sales Area</td>
+<td><code>1010 / 10 / 00</code></td>
+<td>Sales Org Germany, Direct Sales, Cross Division</td>
+</tr>
+<tr>
+<td>Text type alvo</td>
+<td><code>Y001</code></td>
+<td>Quotation Header Text (pré-existente no sistema)</td>
+</tr>
+<tr>
+<td>Text object (header)</td>
+<td><code>VBBK</code></td>
+<td>Objeto de texto — cabeçalho de documento de vendas</td>
+</tr>
+<tr>
+<td>Procedimento na cotação</td>
+<td><code>Z1</code></td>
+<td>Sales Header (padrão da QT — Y001 <strong>sem</strong> access sequence = entrada manual)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>UNIT 1 — Introducing Text Control in SAP S/4HANA Sales</h2>
+<p><em>Sem exercícios — conteúdo conceitual.</em></p>
+<h3>Contexto</h3>
+<p>Textos em documentos de vendas não são campos livres: são objetos estruturados, com tipo, idioma, procedimento de determinação e (opcionalmente) estratégia de cópia automática entre documentos da cadeia.</p>
+<h3>Conceito</h3>
+<p><strong>Tipo de Texto (Text Type)</strong>
+- É o pré-requisito para inserir um texto — a metáfora útil é "uma folha de papel em branco" esperando conteúdo
+- Definido por <strong>objeto de texto</strong>: <code>VBBK</code> (cabeçalho doc. vendas), <code>VBBP</code> (item), <code>KNVV</code>/<code>KNA1</code> (cliente), etc.
+- Exemplos vistos no sistema: <code>0001</code> Form Header, <code>0002</code> Header Note 1, <code>0003</code> Header Note 2, <code>Y001</code> Quotation Header Text</p>
+<p><strong>Procedimento de Determinação de Texto (Text Determination Procedure)</strong>
+- "Container" que agrupa os tipos de texto relevantes para um contexto específico
+- Transação: <strong>VOTXN</strong> (ou SPRO → SD → Basic Functions → Text Control → Set Up Text Determination)</p>
+<p><strong>Atribuição por nível:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Nível</th>
+<th>Procedimento atribuído a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cabeçalho</td>
+<td>Tipo de documento de vendas / tipo de entrega / tipo de faturamento</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>Categoria de item (vendas ou entrega)</td>
+</tr>
+<tr>
+<td>Faturamento</td>
+<td>Direto no tipo de faturamento (não existe categoria de item em faturamento)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Transferência automática de texto</strong>
+- Exige uma <strong>sequência de acesso</strong> vinculada ao tipo de texto <strong>dentro do procedimento</strong>
+- Sequência = estratégia de busca (objeto de texto + tipo de texto + idioma, opcionalmente parceiro/org. vendas)
+- Acessos são processados em ordem e são <strong>exclusivos</strong>: para no primeiro que encontrar</p>
+<p><strong>Regra crítica — cadeia de documentos:</strong></p>
+<pre><code>Inquiry → Quotation → Order
+
+Order NÃO puxa texto direto da Inquiry — só da Quotation
+Quotation puxa da Inquiry
+Order puxa da Quotation
+
+Motivo: o acesso ao objeto VBBK/VBBP sempre se refere ao
+        documento IMEDIATAMENTE ANTERIOR, nunca ao &quot;avô&quot;
+</code></pre>
+<p><strong>Referenciar vs. Duplicar texto</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Referência</td>
+<td>Um único registro no banco; editar na fonte reflete em todos os documentos; edição manual no documento → passa a duplicar dali em diante</td>
+</tr>
+<tr>
+<td>Duplicar</td>
+<td>Cópia independente; consome mais espaço; usar só quando funcionalmente necessário</td>
+</tr>
+</tbody>
+</table></div>
+<h3>✅ Diagnóstico AMS — Unit 1</h3>
+<ul>
+<li>"Texto da consulta não aparece no pedido" → antes de qualquer coisa, verificar se a configuração não está tentando pular um nível da cadeia. O pedido só lê da cotação.</li>
+<li>"Alterei o texto na cotação e mudou no pedido também" → comportamento de <strong>referência</strong> (não duplicação); é configuração, não bug.</li>
+</ul>
+<hr />
+<h2>UNIT 2 — Setting Up Text Control (Exercício 1: Configure Text Control in Customizing)</h2>
+<h3>Contexto</h3>
+<p><strong>Business case:</strong> o setor de customer service precisa inserir um texto de cabeçalho específico nas cotações, e esse texto deve ser copiado automaticamente para o pedido de venda quando o pedido é criado com referência à cotação. O tipo de texto <code>Y001 Quotation Header Text</code> já existe no sistema e é utilizável em cotações — mas <strong>não</strong> está disponível nos pedidos do tipo <code>ZA11</code>.</p>
+<p><strong>Tarefa:</strong> criar procedimento de determinação de texto próprio, criar sequência de acesso que busque o texto na cotação, vincular ambos e atribuir ao tipo de documento <code>ZA11</code>. Depois, testar a propagação.</p>
+<h3>Conceito aplicado</h3>
+<p>A disponibilidade de um tipo de texto em um documento e a cópia automática desse texto são <strong>duas coisas independentes</strong>:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>O que se quer</th>
+<th>O que configurar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo de texto <strong>aparecer</strong> no documento</td>
+<td>Incluir o tipo no procedimento + atribuir procedimento ao doc. type</td>
+</tr>
+<tr>
+<td>Texto ser <strong>copiado</strong> do predecessor</td>
+<td>Vincular uma <strong>access sequence</strong> ao tipo, dentro do procedimento</td>
+</tr>
+</tbody>
+</table></div>
+<p>Se só o primeiro for feito, o tipo aparece na aba Texts mas sempre vazio (entrada manual). É exatamente o comportamento que o <code>Y001</code> tem na cotação (procedimento <code>Z1</code>), onde a análise mostra <code>111 Access sequence does not exist</code>.</p>
+<hr />
+<h3>Sequência executada</h3>
+<pre><code>1. VOTXN → Sales Document / Header → Change
+     → Text Determination Procedures
+     → seleciona 01 → Copy As → chave 12, desc. &quot;Header Text–Gr11&quot;
+     → &quot;Choose the key from the allowed name space&quot; (Enter) → copy all → Save
+
+2. → Access sequences → New Entries
+     → 9011 &quot;ACESS SEQUENCE GR11&quot; → Save
+     → seleciona 9011 → Access sequence for Text IDs → New Entries
+     → 010 / VBBK / Y001 / All Languages ✔ / Requirement 1 → Save
+
+3. Volta até &quot;Customizing Text Determination&quot;
+     → Texts → Generate access
+     → mensagem de status: &quot;Access generated&quot; ✔
+
+4. → Text Determination Procedures → seleciona 12
+     → Text IDs in Procedure → New Entries
+     → SeqNo 20 / ID Y001 / Access Seq. 9011 → Save
+     (posicionado entre 0002 Header Note 1 e 0003 Header Note 2)
+
+5. → Text Procedure Assignment (⚠ precisa estar em Change View)
+     → linha ZA11 → campo TxtDe: 01 → 12 → Save
+
+6. VA21 → cotação QT / C700-C11 / P605-111 / PPR0 300 EUR
+     → Header details → aba Texts → texto no Y001 → Save
+
+7. VA01 → ZA11 → Create with Reference → Quotation
+     → aba Texts → duplo clique em Y001 → validar cópia → Save
+</code></pre>
+<hr />
+<h3>Tabelas de campos — Customizing</h3>
+<p><strong>Procedimento de determinação de texto (cópia de 01)</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TxPrc (chave)</td>
+<td><strong>12</strong></td>
+</tr>
+<tr>
+<td>Descrição</td>
+<td><strong>Header Text–Gr11</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Regra de nomenclatura do exercício: chave = <code>1 + ##</code>. Grupo 11 → chave <strong>12</strong>.</p>
+</blockquote>
+<p><strong>Sequência de acesso — cabeçalho</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access sequence</td>
+<td><strong>9011</strong></td>
+</tr>
+<tr>
+<td>Descrição</td>
+<td><strong>ACESS SEQUENCE GR11</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sequência de acesso — detalhe do acesso (Access sequence for Text IDs)</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SeqNo</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td>Text Object</td>
+<td><strong>VBBK</strong></td>
+</tr>
+<tr>
+<td>ID</td>
+<td><strong>Y001</strong></td>
+</tr>
+<tr>
+<td>All Languages</td>
+<td>✔ Selecionado</td>
+</tr>
+<tr>
+<td>Requirement</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Text IDs in Procedure (procedimento 12)</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SeqNo</td>
+<td><strong>20</strong></td>
+</tr>
+<tr>
+<td>ID</td>
+<td><strong>Y001</strong></td>
+</tr>
+<tr>
+<td>Access Seq.</td>
+<td><strong>9011</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Text Procedure Assignment</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales Doc. Type</td>
+<td><strong>ZA11</strong> (Trade Fair11-Order)</td>
+</tr>
+<tr>
+<td>TxtDe</td>
+<td><strong>12</strong> (era <code>01</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h3>Tabelas de campos — Teste funcional</h3>
+<p><strong>Cotação (VA21)</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quotation Type</td>
+<td><strong>QT</strong></td>
+</tr>
+<tr>
+<td>Sold-To Party</td>
+<td><strong>C700-C11</strong></td>
+</tr>
+<tr>
+<td>Cust. Reference</td>
+<td><strong>REF-11A</strong></td>
+</tr>
+<tr>
+<td>Valid From / Valid To</td>
+<td>30.07.2026 / <strong>31.08.2026</strong> (fim do mês seguinte)</td>
+</tr>
+<tr>
+<td>Material</td>
+<td><strong>P605-111</strong></td>
+</tr>
+<tr>
+<td>Order Quantity</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Condition Type</td>
+<td><strong>PPR0</strong> = <strong>300 EUR</strong></td>
+</tr>
+<tr>
+<td>Text type do texto</td>
+<td><strong>Y001 Quotation header text</strong></td>
+</tr>
+<tr>
+<td>Conteúdo do texto</td>
+<td><code>While stocks last. All orders subject to prior sale.</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Valores esperados confirmados:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor esperado</th>
+<th>Confirmado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net Value</td>
+<td><strong>300,00 EUR</strong></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Expect.Ord.Val.</td>
+<td>210,00 EUR (70% de 300 — probabilidade padrão da QT)</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Item Description</td>
+<td>Alpha-Bike 11</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Lang. do texto</td>
+<td>EN</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Pedido (VA01)</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order Type</td>
+<td><strong>ZA11</strong></td>
+</tr>
+<tr>
+<td>Modo de criação</td>
+<td><strong>Create with Reference</strong> → aba Quotation</td>
+</tr>
+<tr>
+<td>Quotation</td>
+<td><strong>20000021</strong></td>
+</tr>
+<tr>
+<td>Cust. Reference</td>
+<td>REF-11A (herdado)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Resultado esperado:</strong> aba Texts → <code>Y001 Quotation header text</code> com <strong>Lang. EN preenchido</strong> e conteúdo idêntico ao da cotação, <strong>sem digitação manual</strong>. ✔ Confirmado no pedido <strong>401</strong>.</p>
+<hr />
+<h3>🔧 Pegadinhas</h3>
+<p><strong>1. <code>Display View</code> vs. <code>Change View</code> — o erro silencioso</strong>
+Navegar pela Dialog Structure sem passar pelo botão <strong>Change</strong> na tela raiz abre as views em modo <strong>exibição</strong>. O título da tela é o único indicador (<code>Display View "..."</code>). Os campos parecem editáveis mas não gravam nada.
+→ Sempre conferir o título da tela antes de digitar.</p>
+<p><strong>2. Esquecer <code>Texts → Generate access</code></strong>
+A sequência de acesso fica salva no customizing mas <strong>não funcional</strong> até ser gerada. Confirmação: mensagem de status <strong>"Access generated"</strong>.
+→ Regenerar sempre que a sequência for alterada.</p>
+<p><strong>3. Clique simples NÃO recarrega o conteúdo do texto</strong>
+Na aba Texts, clique simples apenas destaca a linha — a caixa de texto continua exibindo o conteúdo do tipo anterior. <strong>Só o duplo clique carrega o texto real daquele tipo.</strong>
+→ Foi exatamente isso que mascarou a causa raiz por vários passos: o texto exibido pertencia ao <code>Form Header</code>, não ao <code>Y001</code>.
+→ Sinal de que o tipo tem conteúdo: a coluna <strong>Lang.</strong> preenchida naquela linha.</p>
+<p><strong>4. Chave = <code>1 + ##</code>, não <code>##</code></strong>
+Grupo 11 → procedimento <strong>12</strong>. Erro de leitura aqui invalida o exercício inteiro (e, em exame SyBA, zera a tarefa mesmo com a configuração correta).</p>
+<p><strong>5. Namespace do cliente</strong>
+Ao copiar o procedimento aparece a mensagem <em>"Choose the key from the allowed name space"</em> — é apenas informativa nesse contexto de treinamento. Enter e segue.</p>
+<p><strong>6. Cotação com quantidade totalmente referenciada não aceita novo pedido</strong>
+Erro: <strong>"The reference has already been completely copied or rejected"</strong>. É a <strong>Completion Rule B</strong> (Quotation → Order: item só fecha com quantidade TOTAL referenciada). A cotação 20000020 (qtd 1) foi integralmente consumida pelo pedido 400 e ficou <code>Completed</code>.
+→ Para repetir o teste, criar <strong>nova cotação</strong> (foi o caso: 20000021).</p>
+<p><strong>7. Determinação de texto roda na CRIAÇÃO do documento</strong>
+O pedido 400 não se corrigiu sozinho depois que a origem foi ajustada. Não existe "reprocessar textos" nativo — diferente do botão <strong>Update</strong> de pricing.</p>
+<hr />
+<h3>✅ Diagnóstico AMS — Unit 2</h3>
+<h4>O caso real desta prática (o mais valioso)</h4>
+<p><strong>Sintoma:</strong> configuração de determinação de texto aparentemente 100% correta, tipo <code>Y001</code> visível na aba Texts do pedido, mas <strong>sempre vazio</strong>.</p>
+<p><strong>Ferramenta:</strong> Análise de Determinação de Texto (<code>Goto → Texts → Analysis</code> na aba Texts do documento).</p>
+<p><strong>Leitura do log — os três códigos que resolvem o ticket:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Mensagem</th>
+<th>Significado</th>
+<th>Onde investigar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>111</strong></td>
+<td><em>Access sequence does not exist</em></td>
+<td>Tipo de texto <strong>sem</strong> sequência de acesso → entrada manual por design</td>
+<td>Procedimento (VOTXN) — é assim que o <code>Y001</code> se comporta na cotação (proc. <code>Z1</code>)</td>
+</tr>
+<tr>
+<td><strong>101</strong></td>
+<td><em>Requirement is not met: text could not be obtained</em></td>
+<td>Acesso <strong>abortado</strong> pela rotina de requisito (ABAP)</td>
+<td>Requisito no acesso / VOFM → Requirements → Text</td>
+</tr>
+<tr>
+<td><strong>110</strong></td>
+<td><em>Text does not exist</em></td>
+<td>Requisito <strong>atendido</strong>, acesso <strong>executado</strong>, mas a <strong>origem está vazia</strong></td>
+<td>O documento predecessor — problema de <strong>DADO</strong>, não de config</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Log obtido no pedido 400:</strong></p>
+<pre><code>Text deter 12 TXT HEADER GR11
+  Text ty Y001 Y001 Quotation header text    Access sequen 9011
+    Nr  Object  ID    All  Req   Note
+    010 VBBK    Y001   X   001   110 Text does not exist
+</code></pre>
+<p><strong>Cadeia de eliminação de hipóteses executada:</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Hipótese</th>
+<th>Verificação</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Procedimento errado atribuído ao ZA11</td>
+<td>Log mostra <code>12 TXT HEADER GR11</code></td>
+<td>❌ Eliminada — atribuição correta</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Y001 sem access sequence no procedimento</td>
+<td>Log mostra <code>Access sequen 9011</code></td>
+<td>❌ Eliminada — vínculo correto</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Access sequence não gerada</td>
+<td>Log executou o acesso 010</td>
+<td>❌ Eliminada — geração ok</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fluxo de documentos sem predecessor</td>
+<td><code>Environment → Document Flow</code>: Quotation 20000020 → Order 400</td>
+<td>❌ Eliminada — fluxo íntegro</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Conflito de idioma (Requirement 1)</td>
+<td>Idioma do BP <code>C700-C11</code> = <strong>EN</strong>; texto salvo em <strong>EN</strong>; log deu <code>110</code>, não <code>101</code></td>
+<td>❌ Eliminada — requisito passou</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Texto gravado no tipo errado na origem</strong></td>
+<td>Duplo clique tipo por tipo na cotação → texto estava em <strong>Form Header (0001)</strong></td>
+<td>✅ <strong>CAUSA RAIZ</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Conclusão:</strong> o log <code>110</code> era <strong>absolutamente fiel</strong>. O sistema buscou <code>VBBK / Y001</code> na cotação e corretamente não encontrou nada, porque o texto havia sido digitado no <code>Form Header</code>. Nenhuma linha de configuração estava errada.</p>
+<h4>Cenários de ticket AMS</h4>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Chamado típico</th>
+<th>Diagnóstico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Configurei tudo certo e o texto não copia"</td>
+<td>Rodar Análise de Determinação de Texto <strong>primeiro</strong>. <code>110</code> → o problema é dado de origem, não config. Distinguir <code>110</code> de <code>101</code> economiza horas.</td>
+</tr>
+<tr>
+<td>"Tipo de texto novo não aparece no pedido"</td>
+<td>Vínculo é em <strong>dois níveis</strong>: tipo→procedimento <strong>e</strong> procedimento→doc. type. Esquecer o segundo é o erro mais comum.</td>
+</tr>
+<tr>
+<td>"Texto aparece mas sempre vazio"</td>
+<td>Tipo está no procedimento <strong>sem</strong> access sequence (<code>111</code>) — comportamento por design, entrada manual.</td>
+</tr>
+<tr>
+<td>"Alterei o texto na origem, corrija os pedidos existentes"</td>
+<td>Não existe reprocessamento nativo. Ou entrada manual doc. por doc., ou programa em lote. Determinação roda na criação.</td>
+</tr>
+<tr>
+<td>"Não consigo criar pedido a partir da cotação"</td>
+<td>Checklist: cotação <code>Completed</code>? quantidade totalmente referenciada? item rejeitado? <code>Valid To</code> expirado? copy control existe? → Fluxo de Documentos responde as duas primeiras.</td>
+</tr>
+<tr>
+<td>"Alterei config e nada mudou"</td>
+<td>Verificar se a view estava em <code>Change</code> (não <code>Display</code>) e se o acesso foi <strong>regenerado</strong>.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>🎯 Resumo executivo — Aprendizados-chave</h2>
+<ol>
+<li>
+<p><strong>Disponibilidade ≠ cópia automática.</strong> Incluir um tipo de texto no procedimento o torna <em>visível</em>; só a <strong>access sequence</strong> o torna <em>copiável</em>. São duas configurações independentes, e confundi-las gera o ticket "aparece mas está vazio".</p>
+</li>
+<li>
+<p><strong>Texto só copia do documento imediatamente anterior.</strong> <code>Inquiry → Quotation → Order</code>: o pedido lê da cotação, nunca da consulta. O objeto <code>VBBK</code>/<code>VBBP</code> sempre aponta para o predecessor direto.</p>
+</li>
+<li>
+<p><strong>A Análise de Determinação de Texto é a PRIMEIRA ferramenta, não a última.</strong> Os códigos <code>101</code> / <code>110</code> / <code>111</code> particionam o espaço de causas antes de qualquer revisão manual de customizing.</p>
+</li>
+<li>
+<p><strong><code>110 Text does not exist</code> significa "o dado não está lá", não "a config está errada".</strong> Foi a lição central desta prática: gastei o diagnóstico inteiro procurando erro de configuração quando o log já dizia que a configuração estava certa e a origem estava vazia.</p>
+</li>
+<li>
+<p><strong><code>101</code> vs. <code>110</code> é a distinção que separa júnior de sênior.</strong> <code>101</code> = requisito abortou o acesso (investigar VOFM/rotina). <code>110</code> = acesso rodou e não achou (investigar o documento predecessor).</p>
+</li>
+<li>
+<p><strong>Clique simples não recarrega o conteúdo do texto na aba Texts.</strong> Só o duplo clique. A coluna <strong>Lang.</strong> preenchida é o indicador confiável de que o tipo tem conteúdo. Este detalhe de UI mascarou a causa raiz por vários passos.</p>
+</li>
+<li>
+<p><strong>Sempre regenerar o acesso</strong> (<code>Texts → Generate access</code>) após criar ou alterar uma sequência. Sem isso a sequência existe mas não funciona. Confirmação: <code>Access generated</code>.</p>
+</li>
+<li>
+<p><strong>Conferir <code>Change View</code> vs. <code>Display View</code> no título da tela.</strong> Navegar pela Dialog Structure sem clicar em Change abre em exibição, e a alteração se perde silenciosamente.</p>
+</li>
+<li>
+<p><strong>Nomenclatura exata importa mais que a lógica.</strong> Chave = <code>1 + ##</code> (grupo 11 → <strong>12</strong>). Em exame SyBA, nome errado zera a tarefa mesmo com configuração perfeita.</p>
+</li>
+<li>
+<p><strong>Completion Rule B tem efeito prático em teste.</strong> Cotação com quantidade totalmente referenciada fica <code>Completed</code> e recusa novo pedido ("The reference has already been completely copied or rejected"). Planejar quantidade maior, ou criar nova cotação a cada iteração de teste.</p>
+</li>
+<li>
+<p><strong>Determinação de texto não é retroativa.</strong> Roda na criação do documento. Não há equivalente ao botão <code>Update</code> de pricing.</p>
+</li>
+<li>
+<p><strong>Fluxo de Documentos (<code>Environment → Document Flow</code>) valida a integridade da cadeia em um olhar</strong> — predecessor, quantidade referenciada, status. Elimina hipóteses rápido.</p>
+</li>
+</ol>
+<hr />
+<h2>📚 Referência técnica</h2>
+<h3>Transações</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Transação</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VOTXN</strong></td>
+<td>Determinação de texto — acesso direto (procedimentos, access sequences, atribuição)</td>
+</tr>
+<tr>
+<td><strong>SPRO</strong></td>
+<td>Customizing geral</td>
+</tr>
+<tr>
+<td><strong>VA21 / VA22 / VA23</strong></td>
+<td>Criar / Alterar / Exibir cotação</td>
+</tr>
+<tr>
+<td><strong>VA01 / VA02 / VA03</strong></td>
+<td>Criar / Alterar / Exibir pedido de venda</td>
+</tr>
+<tr>
+<td><strong>VOFM</strong></td>
+<td>Requisitos e rotinas (Requirements → Text) — namespace cliente 600–999</td>
+</tr>
+<tr>
+<td><strong>SO10</strong></td>
+<td>Textos padrão (standard texts)</td>
+</tr>
+<tr>
+<td><strong>SE63</strong></td>
+<td>Tradução de textos</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Caminho SPRO completo</h3>
+<pre><code>SPRO → SAP Reference IMG
+  → Sales and Distribution
+    → Basic Functions
+      → Text Control
+        → Set Up Text Determination
+          → [Text Object: Sales Document → ● Header] → Change
+             ├── Text Determination Procedures
+             │     └── Text IDs in Procedure
+             ├── Access Sequences
+             │     └── Access Sequence for Text IDs
+             └── Text Procedure Assignment
+
+Geração do acesso: menu Texts → Generate access
+    (a partir da tela &quot;Customizing Text Determination&quot;)
+</code></pre>
+<h3>Navegação de diagnóstico no documento</h3>
+<pre><code>Documento de vendas (VA02/VA03)
+  → Display doc. header details  (ou Goto → Header)
+     → aba Texts
+        → duplo clique no tipo de texto  (carrega o conteúdo real)
+        → Goto → Texts → Analysis       (Análise de Determinação de Texto)
+
+Fluxo de documentos: Environment → Document Flow
+Idioma do parceiro:  Goto → Header → Partner → detalhe do endereço → Communication → Language
+</code></pre>
+<h3>Objetos de texto relevantes em SD</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Escopo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VBBK</code></td>
+<td>Cabeçalho de documento de vendas</td>
+</tr>
+<tr>
+<td><code>VBBP</code></td>
+<td>Item de documento de vendas</td>
+</tr>
+<tr>
+<td><code>KNA1</code></td>
+<td>Cliente — dados gerais</td>
+</tr>
+<tr>
+<td><code>KNVV</code></td>
+<td>Cliente — área de vendas</td>
+</tr>
+<tr>
+<td><code>LIKP</code> / <code>LIPS</code></td>
+<td>Entrega — cabeçalho / item</td>
+</tr>
+<tr>
+<td><code>VBBK</code> (faturamento)</td>
+<td>Cabeçalho de documento de faturamento</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Códigos de retorno da Análise de Determinação de Texto</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Mensagem</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>101</code></td>
+<td>Requirement is not met: text could not be obtained</td>
+<td>Rotina de requisito abortou o acesso</td>
+</tr>
+<tr>
+<td><code>110</code></td>
+<td>Text does not exist</td>
+<td>Acesso executado; origem vazia (<strong>problema de dado</strong>)</td>
+</tr>
+<tr>
+<td><code>111</code></td>
+<td>Access sequence does not exist</td>
+<td>Tipo sem sequência → entrada manual por design</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Notas SAP relacionadas</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Nota</th>
+<th>Assunto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>385982</strong></td>
+<td>Customização de incompletude de textos (texto obrigatório / erros 50-51 via <code>V_TVUVF</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Apps Fiori equivalentes</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manage Sales Quotations</td>
+<td>Criar/alterar cotações (alternativa à VA21/VA22)</td>
+</tr>
+<tr>
+<td>Manage Sales Orders</td>
+<td>Criar/alterar pedidos (alternativa à VA01/VA02)</td>
+</tr>
+<tr>
+<td>Create Sales Orders – VA01</td>
+<td>App GUI-in-Fiori</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Nota: a <strong>configuração</strong> de controle de texto (<code>VOTXN</code>) é feita via SAP GUI. O Fiori launchpad foi usado, quando aplicável, apenas na parte de teste funcional.</p>
+</blockquote>
+<hr />
+<h2>Status da trilha após esta prática</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Curso</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>S46056 — Configurando o Controle de Texto</td>
+<td>✅ Concluído</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Exercício — Controle de Texto</td>
+<td>✅ <strong>Concluído com prática hands-on completa (29/07/2026)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Próximo foco:</strong> S4C03 (exercícios + quizzes) — acesso ao sistema expira em <strong>06/08/2026</strong>.</p>
+</div></article>
+<footer><div class="wrap">
+  <span>Documentação autoral · ambiente de treinamento SAP</span>
+  <span><a href="index.html">← todos os módulos</a></span>
+</div></footer>
+</body>
+</html>

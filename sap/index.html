@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prática SAP S/4HANA — Sales (SD) · Alexandre Ferreira Moura</title>
+<meta name="description" content="Prática hands-on da trilha de certificação C_TS462: 6 módulos, 80+ exercícios documentados em sistema de treinamento SAP S/4HANA 2025.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
+--sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--ops-soft:#FBEFDD;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
+a:focus-visible{outline:3px solid var(--sys);outline-offset:3px;border-radius:4px}
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+.topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
+header{padding:56px 0 44px;border-bottom:1px solid var(--line);background:var(--paper)}
+.status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sys);background:var(--sys-soft);padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:18px;font-weight:500}
+h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,4.5vw,2.5rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:16px}
+.lead{color:var(--ink-soft);max-width:640px}
+.nums{display:flex;flex-wrap:wrap;gap:36px;margin-top:28px}
+.num b{font-family:'Archivo',sans-serif;font-size:1.7rem;font-weight:800;display:block;line-height:1.1}
+.num span{font-size:.8rem;color:var(--ink-soft)}
+section{padding:52px 0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px}
+.mods{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mod{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px;display:block;color:var(--ink);transition:border-color .15s,transform .15s}
+.mod:hover{border-color:var(--sys);text-decoration:none;transform:translateY(-2px)}
+.mod .code{font-family:var(--mono);font-size:.74rem;color:var(--sys);letter-spacing:.06em;margin-bottom:8px;display:block}
+.mod h2{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+.mod p{font-size:.87rem;color:var(--ink-soft)}
+.mod .go{font-family:var(--mono);font-size:.76rem;color:var(--sys);margin-top:14px;display:inline-block}
+.note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ops);border-radius:10px;padding:22px 26px;margin-top:44px;font-size:.92rem;color:var(--ink-soft)}
+.note b{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:34px 0 60px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
+@media(max-width:640px){.mods{grid-template-columns:1fr}.nums{gap:24px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="name">Alexandre Ferreira Moura</span>
+  <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
+</div></div>
+
+<header><div class="wrap">
+  <span class="status">Em preparação para a certificação C_TS462</span>
+  <h1>Prática SAP S/4HANA — Sales (SD)</h1>
+  <p class="lead">Documentação completa da prática hands-on executada como parte da trilha oficial da certificação <strong>SAP Certified Associate — S/4HANA Cloud Private Edition, Sales</strong> (SAP Learning Hub), em sistema de treinamento SAP S/4HANA 2025. Todos os objetos de customizing e documentos de negócio foram criados e testados do zero — e cada exercício inclui análise de causa raiz dos erros encontrados, a competência central do trabalho de suporte AMS.</p>
+  <div class="nums">
+    <div class="num"><b>15</b><span>itens da trilha concluídos</span></div>
+    <div class="num"><b>6</b><span>módulos práticos documentados</span></div>
+    <div class="num"><b>80+</b><span>exercícios executados</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <p class="eyebrow">Módulos documentados</p>
+  <div class="mods">
+    <a class="mod" href="s46000.html">
+      <span class="code">S46000</span>
+      <h2>Fundamentos de Vendas</h2>
+      <p>Ciclo Order-to-Cash completo, dados mestre (Business Partner, material), pré-venda com Completion Rules, condições PR00/K007 e análises multidimensionais.</p>
+      <span class="go">ler documentação →</span>
+    </a>
+    <a class="mod" href="s46200.html">
+      <span class="code">S46200</span>
+      <h2>Precificação (Pricing)</h2>
+      <p>Condition Technique construída do zero: tables, access sequences, condition types e pricing procedure. Exclusão de condições, limites cumulativos, hierarquia de clientes e rebates (Condition Contract Management). 27 exercícios.</p>
+      <span class="go">ler documentação →</span>
+    </a>
+    <a class="mod" href="s46100.html">
+      <span class="code">S46100</span>
+      <h2>Processamento de Entregas</h2>
+      <p>Shipping points, rotas, agendamento e delivery due list — e a integração completa com SAP EWM embarcado: warehouse tasks, goods issue e ciclo inbound, com diagnóstico profundo de dessincronia EWM↔LE.</p>
+      <span class="go">ler documentação →</span>
+    </a>
+    <a class="mod" href="s46051.html">
+      <span class="code">S46051</span>
+      <h2>Acordos-Quadro</h2>
+      <p>Quantity Contract, Value Contract com Assortment Module e Rental Contract — release orders, controle de saldo e comportamento de contratos esgotados.</p>
+      <span class="go">ler documentação →</span>
+    </a>
+    <a class="mod" href="s46056.html">
+      <span class="code">S46056</span>
+      <h2>Controle de Texto</h2>
+      <p>Customizing completo de determinação de textos: procedimento, access sequence, atribuição a tipo de documento e diagnóstico via Análise de Determinação (códigos 101/110/111).</p>
+      <span class="go">ler documentação →</span>
+    </a>
+    <a class="mod" href="s4c03.html">
+      <span class="code">S4C03</span>
+      <h2>Implementação S/4HANA</h2>
+      <p>Clean core na prática: Custom Fields via extensibilidade in-app, migração de dados por staging tables (ciclo completo com consistency check e simulate), usuários e roles Fiori.</p>
+      <span class="go">ler documentação →</span>
+    </a>
+  </div>
+  <div class="note">
+    <b>Nota de transparência:</b> todo o conteúdo desta seção é documentação autoral de aprendizado prático em ambiente de treinamento SAP — não representa projetos de clientes reais. Nomes de servidores, usuários e credenciais foram removidos.
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Alexandre Ferreira Moura · atualizado em agosto/2026</span>
+  <span><a href="../index.html">← voltar ao início</a></span>
+</div></footer>
+</body>
+</html>
