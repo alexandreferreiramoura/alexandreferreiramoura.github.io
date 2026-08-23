@@ -42,19 +42,15 @@ footer .wrap{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
   <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
 </div></div>
 <div class="pagehead"><div class="wrap">
-  <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Certificação C_TS462</p>
   <h1>S46200 — Precificação (Pricing)</h1>
   <p class="sub">27 exercícios (incluindo todos os opcionais) · Condition Technique do zero a rebates</p>
 </div></div>
 <article><div class="wrap">
-  <p class="intro">O módulo mais extenso e crítico da trilha — precificação responde por grande parte dos chamados AMS em SD. Toda a cadeia de configuração foi construída do zero e validada em testes de ponta a ponta.</p>
+  <p class="intro">O módulo mais extenso e crítico da trilha — precificação responde por grande parte dos chamados AMS (Application Management Services) em SD. Toda a cadeia de configuração foi construída do zero e validada em testes de ponta a ponta.</p>
   <section>
-    <h2>O que executei</h2>
+    <h2>Tarefas realizadas</h2>
     <ul class="fez"><li>Construí um modelo de precificação completo do zero no customizing: tabela de condição, sequência de acesso, tipos de condição próprios (frete por peso), procedimento de precificação (cópia adaptada do padrão), procedimento de cliente e a determinação que amarra tudo — validado com pedido de venda de ponta a ponta</li><li>Trabalhei com manutenção de registros de condição em escala: criação com template, reajustes com validade futura, alteração em massa, relatórios de preço customizados e renomeação de descrições via export/import Excel no Fiori</li><li>Configurei grupos de exclusão de condições com métodos de comparação e testei o comportamento de supressão entre condições concorrentes</li><li>Configurei limites cumulativos de desconto (condition update) e comprovei o consumo de limite entre pedidos</li><li>Pratiquei condições especiais de negociação (valor de cabeçalho rateado, preço líquido manual, preço mínimo) e precificação por hierarquia de clientes</li><li>Executei o ciclo completo de Condition Contract Management (rebates): contrato de condição, provisões (delta accruals), liquidação parcial e liquidação final com notas de crédito</li><li>Fechei com rastreabilidade de campanha: Promotion e Sales Deal propagados do pedido até a fatura</li></ul>
-  </section>
-  <section>
-    <h2>O que aprendi diagnosticando</h2>
-    <ul class="apr"><li>Como diagnosticar “desconto sumiu na fatura”: o tipo de precificação no copy control decide se condições manuais sobrevivem ao faturamento</li><li>A diferença entre condição suprimida por exclusão (calculada mas inativa) e condição ausente (sem registro) — sintomas iguais, causas raiz opostas</li><li>Que recriar um registro com limite cumulativo apaga o histórico consumido — em produção, sempre editar, nunca recriar</li><li>Que rebates usam uma trilha de determinação totalmente separada da precificação de vendas — investigação de chamado começa em outro lugar</li><li>Uma lição de diagnóstico que levo para qualquer sistema: após ~2h investigando um “bug” que impedia salvar configuração (descartando locks, updates pendentes e objetos corrompidos), a causa raiz era o método de navegação na tela — nem todo comportamento estranho é defeito do sistema</li></ul>
   </section>
   <div class="navdocs">
     <a href="index.html">← todos os módulos</a>

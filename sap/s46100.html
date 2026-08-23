@@ -42,19 +42,15 @@ footer .wrap{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
   <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
 </div></div>
 <div class="pagehead"><div class="wrap">
-  <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Trilha C_TS462</p>
+  <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Certificação C_TS462</p>
   <h1>S46100 — Processamento de Entregas</h1>
   <p class="sub">15 exercícios · Shipping, rotas, agendamento e integração EWM</p>
 </div></div>
 <article><div class="wrap">
-  <p class="intro">Configuração do processo de expedição e o bloco mais denso da trilha: a integração entre Logistics Execution e o SAP EWM embarcado, nos fluxos de saída e de entrada.</p>
+  <p class="intro">Configuração do processo de expedição e o bloco mais denso da trilha: a integração entre LE (Logistics Execution) e o SAP EWM (Extended Warehouse Management) embarcado, nos fluxos de saída e de entrada.</p>
   <section>
-    <h2>O que executei</h2>
-    <ul class="fez"><li>Criei shipping point próprio (via cópia, herdando as tabelas dependentes), tipo de entrega e categoria de item de entrega customizados, com regra de bloqueio de over-delivery validada em teste</li><li>Configurei determinação automática de shipping point e de rotas (no pedido e na entrega, com grupo de peso) e agendamento de expedição por turnos</li><li>Processei entregas em massa via delivery due list e analisei o critério de split (por recebedor/rota); usei o Outbound Delivery Monitor para acompanhamento</li><li>Executei o fluxo de saída integrado ao EWM: entrega LE gerando espelho no EWM, warehouse task de picking, confirmação e saída de mercadoria</li><li>Executei o fluxo de entrada completo: pedido de compra, inbound delivery (pela LE e também criada diretamente no EWM via GR Preparation com ASN), recebimento e warehouse task de putaway</li></ul>
-  </section>
-  <section>
-    <h2>O que aprendi diagnosticando</h2>
-    <ul class="apr"><li>Que cada entrega LE tem um documento espelho no EWM com numeração própria — navegar entre os dois mundos é pré-requisito para investigar qualquer chamado de expedição</li><li>Um caso completo de diagnóstico de causa raiz: erro persistente ao postar Goods Issue que, após sete passos de investigação (status da task, estoque físico, status consolidado do documento, filtros de data da consulta), se revelou processamento já concluído em background — a mensagem de erro era enganosa e a tela de consulta escondia o dado atualizado</li><li>Que mensagens de “sucesso” também enganam: um caminho de navegação errado retornou “atividade realizada com sucesso” sem criar objeto nenhum</li><li>Que antes de suspeitar de erro de customizing em determinação automática, o primeiro passo é validar o dado de teste — material com grupo de carregamento errado simula perfeitamente uma “determinação quebrada”</li></ul>
+    <h2>Tarefas realizadas</h2>
+    <ul class="fez"><li>Criei shipping point próprio (via cópia, herdando as tabelas dependentes), tipo de entrega e categoria de item de entrega customizados, com regra de bloqueio de over-delivery validada em teste</li><li>Configurei determinação automática de shipping point e de rotas (no pedido e na entrega, com grupo de peso) e agendamento de expedição por turnos</li><li>Processei entregas em massa via delivery due list e analisei o critério de split (por recebedor/rota); usei o Outbound Delivery Monitor para acompanhamento</li><li>Executei o fluxo de saída integrado ao EWM: entrega LE (documento de Logistics Execution) gerando espelho no EWM, warehouse task de picking, confirmação e saída de mercadoria</li><li>Executei o fluxo de entrada completo: pedido de compra, inbound delivery (pela LE e também criada diretamente no EWM via GR — Goods Receipt (Recebimento de Mercadoria) — Preparation com ASN — Advance Shipping Notice (Aviso Prévio de Embarque)), recebimento e warehouse task de putaway</li></ul>
   </section>
   <div class="navdocs">
     <a href="index.html">← todos os módulos</a>

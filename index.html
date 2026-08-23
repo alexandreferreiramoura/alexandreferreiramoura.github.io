@@ -1,112 +1,637 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prática SAP S/4HANA — Sales (SD) · Alexandre Ferreira Moura</title>
-<meta name="description" content="Prática hands-on da trilha de certificação C_TS462: 6 módulos, 80+ exercícios documentados em sistema de treinamento SAP S/4HANA 2025.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandre Ferreira Moura — SAP S/4HANA (SD) &amp; TOTVS Protheus</title>
+<meta name="description" content="Especialista em ERP e processos de backoffice. SAP Certified Associate (S/4HANA Cloud Private Edition, Sales) e mais de 3 anos de suporte TOTVS Protheus em projetos SPED/NF-e para clientes como Hilti, Fischer e Gomes da Costa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F7F9FB;--paper:#FFF;--ink:#122031;--ink-soft:#4A5A6B;--line:#DDE5EC;
---sys:#0B63C5;--sys-soft:#E4EFFB;--ops:#B96A00;--ops-soft:#FBEFDD;--mono:'IBM Plex Mono',monospace}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-a{color:var(--sys);text-decoration:none} a:hover{text-decoration:underline}
-a:focus-visible{outline:3px solid var(--sys);outline-offset:3px;border-radius:4px}
-.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:16px 0}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.topbar .name{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
-.topbar nav a{font-family:var(--mono);font-size:.78rem;margin-left:18px;color:var(--ink-soft)}
-header{padding:56px 0 44px;border-bottom:1px solid var(--line);background:var(--paper)}
-.status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sys);background:var(--sys-soft);padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:18px;font-weight:500}
-h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,4.5vw,2.5rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:16px}
-.lead{color:var(--ink-soft);max-width:640px}
-.nums{display:flex;flex-wrap:wrap;gap:36px;margin-top:28px}
-.num b{font-family:'Archivo',sans-serif;font-size:1.7rem;font-weight:800;display:block;line-height:1.1}
-.num span{font-size:.8rem;color:var(--ink-soft)}
-section{padding:52px 0}
-.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px}
-.mods{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.mod{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px;display:block;color:var(--ink);transition:border-color .15s,transform .15s}
-.mod:hover{border-color:var(--sys);text-decoration:none;transform:translateY(-2px)}
-.mod .code{font-family:var(--mono);font-size:.74rem;color:var(--sys);letter-spacing:.06em;margin-bottom:8px;display:block}
-.mod h2{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
-.mod p{font-size:.87rem;color:var(--ink-soft)}
-.mod .go{font-family:var(--mono);font-size:.76rem;color:var(--sys);margin-top:14px;display:inline-block}
-.note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ops);border-radius:10px;padding:22px 26px;margin-top:44px;font-size:.92rem;color:var(--ink-soft)}
-.note b{color:var(--ink)}
-footer{border-top:1px solid var(--line);padding:34px 0 60px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
-@media(max-width:640px){.mods{grid-template-columns:1fr}.nums{gap:24px}}
+  :root{
+    --bg:#F7F9FB;
+    --paper:#FFFFFF;
+    --ink:#122031;
+    --ink-soft:#4A5A6B;
+    --line:#DDE5EC;
+    --sys:#0A6ED1;
+    --sys-soft:#E3F1FC;
+    --sys-dark:#08549E;
+    --totvs:#00A19A;
+    --totvs-soft:#E0F5F3;
+    --totvs-dark:#00786F;
+    --ops:#B96A00;
+    --cert:#157F3C;
+    --cert-soft:#E4F5EA;
+    --cert-dark:#106631;
+    --ops-soft:#FBEFDD;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  a{color:var(--sys);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--sys);outline-offset:3px;border-radius:4px}
+  img{max-width:100%;display:block}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;flex-wrap:wrap;gap:8px}
+  .topbar .brand{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+  .topbar nav{display:flex;gap:20px;flex-wrap:wrap}
+  .topbar nav a{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
+  .topbar nav a:hover{color:var(--ink);text-decoration:none}
+
+  header{padding:64px 0 48px;border-bottom:1px solid var(--line);background:var(--paper)}
+  .flowline{
+    font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;
+    color:var(--ink-soft);margin-bottom:26px;display:flex;flex-wrap:wrap;gap:6px 0;align-items:center;
+  }
+  .flowline .p1{color:var(--totvs);font-weight:500}
+  .flowline .p2{color:var(--sys);font-weight:500}
+  .flowline .arr{color:var(--line);margin:0 8px}
+  h1{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:clamp(2rem,5vw,2.9rem);line-height:1.1;letter-spacing:-.02em;
+    margin-bottom:16px;
+  }
+  .headline{font-size:1.04rem;color:var(--ink-soft);max-width:660px;margin-bottom:8px}
+  .headline strong{color:var(--ink);font-weight:600}
+  .meta{font-family:var(--mono);font-size:.82rem;color:var(--ink-soft);margin:20px 0 26px}
+  .meta .dot{color:var(--line);margin:0 10px}
+
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .badge{
+    display:flex;align-items:center;gap:8px;
+    background:var(--paper);border:1.5px solid var(--line);border-radius:30px;
+    padding:8px 16px 8px 8px;font-size:.83rem;font-weight:500;color:var(--ink);
+    transition:border-color .15s,transform .15s;
+  }
+  .badge:hover{border-color:var(--sys);transform:translateY(-1px);text-decoration:none}
+  .badge .dot-ic{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem;color:#fff;font-weight:700}
+  .badge.b-sap .dot-ic{background:var(--sys)}
+  .badge.b-totvs .dot-ic{background:var(--totvs)}
+  .badge .ext{font-family:var(--mono);font-size:.68rem;color:var(--ink-soft);margin-left:2px}
+
+  .ctas{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-block;padding:12px 22px;border-radius:6px;
+    font-weight:600;font-size:.92rem;border:1.5px solid var(--ink);
+    color:var(--ink);transition:background .15s,color .15s;
+  }
+  .btn:hover{background:var(--ink);color:#fff;text-decoration:none}
+  .btn.primary{background:var(--sys);border-color:var(--sys);color:#fff}
+  .btn.primary:hover{background:var(--sys-dark);border-color:var(--sys-dark)}
+
+  section{padding:58px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:14px;
+  }
+  h2{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:1.5rem;
+    letter-spacing:-.01em;margin-bottom:10px;
+  }
+  p.lead{color:var(--ink-soft);max-width:660px;margin-bottom:30px}
+
+  .sides{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .side{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px}
+  .side h3{font-family:'Archivo',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:6px}
+  .side .tag{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:500;display:inline-block;margin-bottom:14px;padding:4px 10px;border-radius:4px;
+  }
+  .side.sistema .tag{color:var(--sys);background:var(--sys-soft)}
+  .side.processo .tag{color:var(--ops);background:var(--ops-soft)}
+  .side p{font-size:.93rem;color:var(--ink-soft)}
+  .side.sistema{border-top:3px solid var(--sys)}
+  .side.processo{border-top:3px solid var(--ops)}
+
+  .eco-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+  .eco-dot{width:11px;height:11px;border-radius:50%}
+  .eco-dot.sap{background:var(--sys)}
+  .eco-dot.totvs{background:var(--totvs)}
+  .eco-badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;font-weight:500}
+  .eco-badge.sap{color:var(--sys);background:var(--sys-soft)}
+  .eco-badge.totvs{color:var(--totvs);background:var(--totvs-soft)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:24px;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 28px -14px rgba(18,32,49,.25)}
+  .card.acc-sap{border-top:3px solid var(--sys)}
+  .card.acc-totvs{border-top:3px solid var(--totvs)}
+  .card.acc-cert{border-top:3px solid var(--cert)}
+  .card .kicker{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);margin-bottom:8px}
+  .card h3{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+  .card .sub{font-size:.84rem;color:var(--ink-soft);margin-bottom:12px}
+  .card p.desc{font-size:.89rem;color:var(--ink-soft);margin-bottom:16px;flex-grow:1}
+  .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .pill{
+    font-family:var(--mono);font-size:.72rem;padding:4px 10px;border-radius:20px;
+    background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);
+  }
+  .card .cardlink{font-family:var(--mono);font-size:.79rem;font-weight:500;display:inline-flex;align-items:center;gap:5px}
+  .card .cardlink::after{content:"\2192";transition:transform .15s}
+  .card .cardlink:hover::after{transform:translateX(3px)}
+
+  .eco-summary{
+    background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--sys);
+    border-radius:10px;padding:30px;margin-top:8px;
+  }
+  .eco-summary h3{font-family:'Archivo',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:12px}
+  .eco-summary p{color:var(--ink-soft);font-size:.95rem;max-width:620px}
+  .nums{display:flex;flex-wrap:wrap;gap:34px;margin:24px 0}
+  .num b{font-family:'Archivo',sans-serif;font-size:1.6rem;font-weight:800;display:block;line-height:1.1}
+  .num span{font-size:.79rem;color:var(--ink-soft)}
+  .eco-summary .btn{margin-top:20px}
+
+  .strip{
+    display:flex;gap:16px;align-items:flex-start;background:var(--totvs-soft);
+    border-radius:10px;padding:20px 24px;margin-top:24px;border:1px solid #C9E7DF;
+  }
+  .strip .ic{font-family:var(--mono);font-weight:700;color:var(--totvs);font-size:.85rem;flex-shrink:0;padding-top:2px}
+  .strip p{font-size:.89rem;color:#0A473C}
+  .strip strong{color:var(--totvs-dark)}
+
+  .skillgrid{display:grid;grid-template-columns:170px 1fr;gap:14px 26px;align-items:baseline}
+  .skillgrid dt{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);padding-top:5px;
+  }
+
+  .tl{list-style:none;position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl li{position:relative;padding-bottom:34px}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{
+    content:"";position:absolute;left:-26px;top:7px;width:14px;height:14px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--ops);
+  }
+  .tl li.tech::before{border-color:var(--sys)}
+  .tl .when{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
+  .tl h3{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700;margin:4px 0 2px}
+  .tl .org{font-size:.9rem;color:var(--ink-soft);margin-bottom:10px}
+  .tl ul{list-style:none;font-size:.92rem;color:var(--ink-soft)}
+  .tl ul li{padding:0 0 6px 18px;position:relative}
+  .tl ul li::before{content:"\2014";position:absolute;left:0;color:var(--line);border:none;background:none;width:auto;height:auto}
+  .legend{display:flex;gap:26px;margin-bottom:28px;font-size:.82rem;color:var(--ink-soft)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+  .legend .l-sys i{background:var(--sys)}
+  .legend .l-ops i{background:var(--ops)}
+
+  .certs{display:grid;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+  .cert{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .cert:last-child{border-bottom:none}
+  .cert b{font-weight:600;font-size:.94rem}
+  .cert .inst{grid-column:1;font-size:.84rem;color:var(--ink-soft)}
+  .cert .yr{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);grid-row:1/3;align-self:center}
+  .cert.hl{background:var(--sys-soft)}
+  .subhead{
+    font-family:'Archivo',sans-serif;font-size:.95rem;font-weight:700;
+    margin:34px 0 14px;color:var(--ink);
+  }
+  .subhead:first-of-type{margin-top:0}
+
+  footer{padding:50px 0 70px;text-align:left}
+  footer .links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+  footer .fine{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft)}
+
+  @media(max-width:640px){
+    header{padding:48px 0 40px}
+    .sides,.grid{grid-template-columns:1fr}
+    .skillgrid{grid-template-columns:1fr;gap:4px 0}
+    .skillgrid dt{padding-top:14px}
+    .nums{gap:22px}
+    .topbar nav{gap:12px}
+    .topbar nav a{font-size:.72rem}
+  }
 </style>
 </head>
 <body>
+
 <div class="topbar"><div class="wrap">
-  <span class="name">Alexandre Ferreira Moura</span>
-  <nav><a href="../index.html">Início</a><a href="index.html">Prática SAP</a></nav>
+  <span class="brand">Alexandre Ferreira Moura</span>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#sap">SAP</a>
+    <a href="#totvs">TOTVS</a>
+    <a href="#certificacoes">Certificações</a>
+    <a href="#experiencia">Experiência</a>
+  </nav>
 </div></div>
 
-<header><div class="wrap">
-  <span class="status">✓ SAP Certified Associate — C_TS462</span>
-  <h1>Prática SAP S/4HANA — Sales (SD)</h1>
-  <p class="lead">Tarefas práticas executadas na trilha oficial da certificação <strong>SAP Certified Associate — SAP S/4HANA Cloud Private Edition, Sales (C_TS462)</strong>, obtida em agosto de 2026 no formato SyBA — avaliação prática em sistema SAP real. Todos os objetos de customizing e documentos de negócio foram criados e testados do zero em sistema de treinamento SAP S/4HANA 2025. Trilha complementada pelo badge oficial <strong>Introducing RISE with SAP Methodology</strong> (SAP Learning, 2026).</p>
-  <div class="nums">
-    <div class="num"><b>C_TS462</b><span>certificação obtida · formato SyBA</span></div>
-    <div class="num"><b>6</b><span>módulos práticos documentados</span></div>
-    <div class="num"><b>80+</b><span>exercícios executados</span></div>
-  </div>
-</div></header>
+<header>
+  <div class="wrap">
+    <div class="flowline" aria-hidden="true">
+      <span class="p1">TOTVS Protheus</span><span class="arr">&#8594;</span><span class="p1">SPED &middot; NF-e &middot; suporte</span><span class="arr">&#8594;</span><span class="p2">SAP SD</span><span class="arr">&#8594;</span><span class="p2">S/4HANA</span>
+    </div>
+    <h1>Alexandre Ferreira Moura</h1>
+    <p class="headline"><strong>Especialista em ERP &amp; Processos de Backoffice</strong> &mdash; SAP S/4HANA (Sales/SD) &amp; TOTVS Protheus<br>Suporte &middot; Implantação &middot; Processos Fiscais &middot; Aberto a novas oportunidades</p>
+    <p class="meta">📍 São Paulo e Região<span class="dot">·</span>Disponível para início imediato</p>
 
-<section><div class="wrap">
-  <p class="eyebrow">Módulos documentados</p>
-  <div class="mods">
-    <a class="mod" href="s46000.html">
-      <span class="code">S46000</span>
-      <h2>Fundamentos de Vendas</h2>
-      <p>Ciclo Order-to-Cash completo, dados mestre (Business Partner, material), pré-venda com Completion Rules, condições PR00/K007 e análises multidimensionais.</p>
-      <span class="go">ler documentação →</span>
-    </a>
-    <a class="mod" href="s46200.html">
-      <span class="code">S46200</span>
-      <h2>Precificação (Pricing)</h2>
-      <p>Condition Technique construída do zero: tables, access sequences, condition types e pricing procedure. Exclusão de condições, limites cumulativos, hierarquia de clientes e rebates (Condition Contract Management). 27 exercícios.</p>
-      <span class="go">ler documentação →</span>
-    </a>
-    <a class="mod" href="s46100.html">
-      <span class="code">S46100</span>
-      <h2>Processamento de Entregas</h2>
-      <p>Shipping points, rotas, agendamento e delivery due list — e a integração completa com SAP EWM embarcado: warehouse tasks, goods issue e ciclo inbound, com diagnóstico profundo de dessincronização EWM↔LE.</p>
-      <span class="go">ler documentação →</span>
-    </a>
-    <a class="mod" href="s46051.html">
-      <span class="code">S46051</span>
-      <h2>Acordos-Quadro</h2>
-      <p>Quantity Contract, Value Contract com Assortment Module e Rental Contract — release orders, controle de saldo e comportamento de contratos esgotados.</p>
-      <span class="go">ler documentação →</span>
-    </a>
-    <a class="mod" href="s46056.html">
-      <span class="code">S46056</span>
-      <h2>Controle de Texto</h2>
-      <p>Customizing completo de determinação de textos: procedimento, access sequence, atribuição a tipo de documento e diagnóstico via Análise de Determinação (códigos 101/110/111).</p>
-      <span class="go">ler documentação →</span>
-    </a>
-    <a class="mod" href="s4c03.html">
-      <span class="code">S4C03</span>
-      <h2>Implementação S/4HANA</h2>
-      <p>Clean core na prática: Custom Fields via extensibilidade in-app, migração de dados por staging tables (ciclo completo com consistency check e simulate), usuários e roles Fiori.</p>
-      <span class="go">ler documentação →</span>
-    </a>
-  </div>
-  <div class="note">
-    <b>Nota de transparência:</b> todo o conteúdo desta seção é documentação autoral de aprendizado prático em ambiente de treinamento SAP — não representa projetos de clientes reais. Nomes de servidores, usuários e credenciais foram removidos.
-  </div>
-</div></section>
+    <div class="badges">
+      <a class="badge b-sap" href="https://www.credly.com/badges/d537e371-6099-4c21-922c-33d146145acd" target="_blank" rel="noopener">
+        <span class="dot-ic">S4</span> SAP Certified Associate &mdash; S/4HANA Cloud PE, Sales <span class="ext">↗ Credly</span>
+      </a>
+      <a class="badge b-sap" href="https://badger.learning.sap.com/verify/xinot-bosuh-cebuv-ryryt-libol" target="_blank" rel="noopener">
+        <span class="dot-ic">R</span> RISE with SAP Methodology <span class="ext">↗ verificar</span>
+      </a>
+      <a class="badge b-totvs" href="#certificacoes">
+        <span class="dot-ic">T</span> 4 certificações Universidade TOTVS <span class="ext">↓ ver todas</span>
+      </a>
+    </div>
 
-<footer><div class="wrap">
-  <span>Alexandre Ferreira Moura · atualizado em agosto/2026</span>
-  <span><a href="../index.html">← voltar ao início</a></span>
-</div></footer>
+    <div class="ctas">
+      <a class="btn primary" href="https://www.linkedin.com/in/alexandreferreiramoura" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:alexandrefmoura@gmail.com">E-mail</a>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap">
+    <p class="eyebrow">Sobre mim</p>
+    <p class="lead">Atualmente em transição para o ecossistema <strong>SAP</strong>, com certificação SAP Certified Associate (S/4HANA Cloud Private Edition, Sales) obtida em 2026 e formação em Gestão de Dados em andamento (UFPI). Como experiência complementar, atuei por mais de 3 anos em ERP <strong>TOTVS Protheus</strong>, nos módulos Fiscal, Contábil, Compras e Faturamento, com participação em projetos de NF-e, SPED e integração de sistemas em clientes de médio e grande porte.</p>
+    <div class="sides">
+      <div class="side sistema">
+        <span class="tag">Foco atual</span>
+        <h3>Especialização SAP S/4HANA</h3>
+        <p>Certificação SAP Certified Associate (S/4HANA Cloud Private Edition, Sales) e prática hands-on documentada em Sales/SD &mdash; a frente principal da minha atuação técnica hoje.</p>
+      </div>
+      <div class="side processo">
+        <span class="tag">Experiência complementar</span>
+        <h3>TOTVS Protheus &amp; operações</h3>
+        <p>Suporte funcional a ERP TOTVS Protheus (NF-e, SPED, parametrização fiscal) e mais de 10 anos gerindo compras, logística e faturamento &mdash; a base prática que sustenta a transição para SAP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sap">
+  <div class="wrap">
+    <div class="eco-head">
+      <span class="eco-dot sap"></span>
+      <span class="eco-badge sap">Ecossistema SAP S/4HANA</span>
+    </div>
+    <h2>Sales / SD &mdash; do customizing ao diagnóstico</h2>
+    <div class="eco-summary">
+      <h3>Certificado, com a prática documentada</h3>
+      <p>Certificação <strong>SAP Certified Associate &mdash; S/4HANA Cloud Private Edition, Sales (C_TS462)</strong>, obtida no formato SyBA: avaliação prática executada em sistema SAP real. A trilha oficial (SAP Learning Hub) incluiu prática hands-on completa em sistema de treinamento S/4HANA 2025 &mdash; customizing de Pricing, ciclos Order-to-Cash de ponta a ponta, contratos e rebates, entregas com EWM (Extended Warehouse Management) embarcado, clean core e migração de dados &mdash; complementada pelo badge oficial Introducing RISE with SAP Methodology.</p>
+      <div class="nums">
+        <div class="num"><b>SyBA</b><span>aprovação em avaliação prática</span></div>
+        <div class="num"><b>6</b><span>módulos práticos documentados</span></div>
+        <div class="num"><b>80+</b><span>exercícios executados</span></div>
+      </div>
+      <div class="pills">
+        <span class="pill">#SAP_SD</span><span class="pill">#SPRO</span><span class="pill">#Pricing</span><span class="pill">#OrderToCash</span><span class="pill">#EWM</span><span class="pill">#Fiori</span><span class="pill">#CleanCore</span>
+      </div>
+      <a class="btn primary" href="sap/index.html">Ver documentação completa</a>
+    </div>
+  </div>
+</section>
+
+<section id="totvs">
+  <div class="wrap">
+    <div class="eco-head">
+      <span class="eco-dot totvs"></span>
+      <span class="eco-badge totvs">Ecossistema TOTVS Protheus</span>
+    </div>
+    <h2>Projetos reais de implantação e suporte</h2>
+    <p class="lead">Atuação como Analista de Suporte Backoffice na Focus Consultoria &amp; Outsourcing (2008&ndash;2011), em projetos de implantação fiscal e suporte pós-go-live para clientes de médio e grande porte &mdash; principalmente NF-e, SPED (Sistema Público de Escrituração Digital) Fiscal e Contábil, com um caso de virada completa de versão do ERP.</p>
+
+    <div class="grid">
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Gomes da Costa <span style="font-weight:400;color:var(--ink-soft);font-size:.85em">(atual Nauterra)</span></h3>
+        <p class="sub">Projetos SPED e Automação Comercial</p>
+        <p class="desc">Analista de testes nos projetos SPED (NF-e, Fiscal e Contábil) e no projeto de automação comercial, com suporte pós-go-live em ambos.</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#NFe</span><span class="pill">#AutomacaoComercial</span><span class="pill">#SuporteGoLive</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Sancor do Brasil</h3>
+        <p class="sub">Implantação SPED + virada de versão</p>
+        <p class="desc">Implantação SPED (NF-e, Fiscal e Contábil), suporte funcional e virada completa de versão do TOTVS Protheus (v8 para v10).</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#SuporteFuncional</span><span class="pill">#ViradaDeVersao</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Zoomp</h3>
+        <p class="sub">Implantação NF-e sobre base legado</p>
+        <p class="desc">Implantação de NF-e na versão v10, migrando e integrando com base de dados legado (v8).</p>
+        <div class="pills"><span class="pill">#NFe</span><span class="pill">#MigracaoDeBase</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Singulare Tubos e Galerias</h3>
+        <p class="sub">Implantação SPED completo</p>
+        <p class="desc">Implantação SPED (NF-e, Fiscal e Contábil) com suporte pós-go-live.</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#NFe</span><span class="pill">#SuporteGoLive</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Murrelektronik</h3>
+        <p class="sub">Implantação NF-e</p>
+        <p class="desc">Implantação SPED NF-e.</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#NFe</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Hilti do Brasil</h3>
+        <p class="sub">SPED Contábil em base legado</p>
+        <p class="desc">Implantação SPED Contábil em base legado (v8).</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#Contabil</span><span class="pill">#BaseLegado</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Mtel</h3>
+        <p class="sub">SPED completo + suporte pós-go-live</p>
+        <p class="desc">Implantação SPED Contábil, NF-e e Fiscal, com suporte pós-go-live.</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#NFe</span><span class="pill">#Contabil</span><span class="pill">#SuporteGoLive</span></div>
+      </div>
+
+      <div class="card acc-totvs">
+        <span class="kicker">Cliente</span>
+        <h3>Fischer do Brasil</h3>
+        <p class="sub">SPED NF-e + suporte pós-go-live</p>
+        <p class="desc">Implantação SPED NF-e com suporte pós-go-live.</p>
+        <div class="pills"><span class="pill">#SPED</span><span class="pill">#NFe</span><span class="pill">#SuporteGoLive</span></div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <span class="ic">TSS</span>
+      <p><strong>Ponto técnico comum a todos os projetos:</strong> configuração de WebServices via TSS (TOTVS Secure Store) para a comunicação eletrônica com a SEFAZ &mdash; a camada de integração que efetivamente transmite, valida e retorna o status dos documentos fiscais em cada uma das implantações acima.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certificacoes">
+  <div class="wrap">
+    <p class="eyebrow">Certificações</p>
+    <h2>Verificáveis, com link oficial</h2>
+    <p class="lead">Todas as certificações abaixo podem ser conferidas diretamente na fonte emissora.</p>
+
+    <div class="subhead" style="margin-top:0">SAP</div>
+    <div class="grid">
+      <div class="card acc-cert">
+        <span class="kicker">SAP &middot; agosto/2026 &middot; válido até 23/08/2027</span>
+        <h3>SAP Certified Associate</h3>
+        <p class="sub">SAP S/4HANA Cloud Private Edition, Sales (C_TS462)</p>
+        <p class="desc">Certificação oficial obtida no formato SyBA &mdash; avaliação prática em sistema SAP real, não prova de múltipla escolha.</p>
+        <div class="pills"><span class="pill">#SAP_SD</span><span class="pill">#S4HANA</span><span class="pill">#SyBA</span></div>
+        <a class="cardlink" href="https://www.credly.com/badges/d537e371-6099-4c21-922c-33d146145acd" target="_blank" rel="noopener">Verificar no Credly</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">SAP Learning &middot; julho/2026 &middot; Beginner Level</span>
+        <h3>Introducing RISE with SAP Methodology</h3>
+        <p class="sub">Para parceiros e clientes SAP</p>
+        <p class="desc">Fases da metodologia RISE with SAP, ferramentas do SAP Activate e aplicação em casos reais de clientes.</p>
+        <div class="pills"><span class="pill">#RISE_with_SAP</span><span class="pill">#CloudStrategy</span></div>
+        <a class="cardlink" href="https://badger.learning.sap.com/verify/xinot-bosuh-cebuv-ryryt-libol" target="_blank" rel="noopener">Verificar badge</a>
+      </div>
+    </div>
+
+    <div class="subhead">Universidade TOTVS</div>
+    <div class="grid">
+      <div class="card acc-cert">
+        <span class="kicker">Universidade TOTVS &middot; 21/05/2026 &middot; 45h32</span>
+        <h3>Contabilidade Gerencial</h3>
+        <p class="sub">TOTVS Backoffice &mdash; Linha Protheus</p>
+        <p class="desc">Módulo de contabilidade gerencial aplicada ao ERP Protheus.</p>
+        <div class="pills"><span class="pill">#TOTVS_Protheus</span><span class="pill">#Contabil</span></div>
+        <a class="cardlink" href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjExMTQ0MTUwfQ==" target="_blank" rel="noopener">Verificar autenticidade</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Universidade TOTVS &middot; 20/11/2025 &middot; 3h44</span>
+        <h3>Configurador</h3>
+        <p class="sub">TOTVS Backoffice &mdash; Linha Protheus</p>
+        <p class="desc">Fundamentos de configuração e parametrização do ambiente Protheus.</p>
+        <div class="pills"><span class="pill">#TOTVS_Protheus</span><span class="pill">#Configurador</span></div>
+        <a class="cardlink" href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjEwMjAwNjEzfQ==" target="_blank" rel="noopener">Verificar autenticidade</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Universidade TOTVS &middot; 12/11/2025 &middot; 2h27</span>
+        <h3>Configurador de Tributos v12.1.2410</h3>
+        <p class="sub">TOTVS Backoffice &mdash; Linha Protheus</p>
+        <p class="desc">Parametrização do motor de tributos na versão 12.1.2410 do Protheus.</p>
+        <div class="pills"><span class="pill">#TOTVS_Protheus</span><span class="pill">#MotorDeTributos</span></div>
+        <a class="cardlink" href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjEwMTIzMDEyfQ==" target="_blank" rel="noopener">Verificar autenticidade</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Universidade TOTVS &middot; 11/11/2025 &middot; 2h09</span>
+        <h3>Configurador v12.1.2410</h3>
+        <p class="sub">TOTVS Backoffice &mdash; Linha Protheus</p>
+        <p class="desc">Configuração geral de ambiente na versão 12.1.2410 do Protheus.</p>
+        <div class="pills"><span class="pill">#TOTVS_Protheus</span><span class="pill">#Configurador</span></div>
+        <a class="cardlink" href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjk5ODEzMDN9" target="_blank" rel="noopener">Verificar autenticidade</a>
+      </div>
+    </div>
+
+    <div class="subhead">Fundação Bradesco / Microsoft (Escola Virtual)</div>
+    <div class="grid">
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; 23/03/2026 &middot; 15h</span>
+        <h3>Administrando Banco de Dados</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: 49833A48-3EDE-4EC3-8EB1-E3CB04D0DD3D</p>
+        <div class="pills"><span class="pill">#BancoDeDados</span><span class="pill">#SQL</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; Microsoft &middot; 20/05/2026 &middot; 16h</span>
+        <h3>AI-900 &mdash; Fundamentos de IA no Azure</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: 795B78FC-961E-4027-BDA0-1E5E9BCEC5B7</p>
+        <div class="pills"><span class="pill">#IA</span><span class="pill">#Azure</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; 28/04/2026 &middot; 15h</span>
+        <h3>Implementando Banco de Dados</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: 6A18F0D7-6E62-43AA-A028-B6DC7FA713AA</p>
+        <div class="pills"><span class="pill">#BancoDeDados</span><span class="pill">#SQL</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; 02/04/2026 &middot; 8h</span>
+        <h3>Modelagem de Dados</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: 3C320058-52DE-4F94-86CE-BE39291C6F7C</p>
+        <div class="pills"><span class="pill">#BancoDeDados</span><span class="pill">#Modelagem</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; Microsoft &middot; 28/04/2026 &middot; 4h</span>
+        <h3>Fluência em Inteligência Artificial</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: 7A473419-7CB7-43EE-9B4F-DD3CE6EA494C</p>
+        <div class="pills"><span class="pill">#IA</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+
+      <div class="card acc-cert">
+        <span class="kicker">Escola Virtual &middot; 02/04/2026 &middot; 2h</span>
+        <h3>LGPD &mdash; Lei Geral de Proteção de Dados</h3>
+        <p class="sub">Curso autoinstrucional</p>
+        <p class="desc">Código de autenticidade: CE188872-5085-42CE-AA07-6A6E81027ACA</p>
+        <div class="pills"><span class="pill">#LGPD</span></div>
+        <a class="cardlink" href="https://www.ev.org.br" target="_blank" rel="noopener">Verificar no portal EV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="wrap">
+    <p class="eyebrow">Competências técnicas</p>
+    <h2>Ferramentas de trabalho</h2>
+    <dl class="skillgrid">
+      <dt>ERP</dt>
+      <dd><div class="pills"><span class="pill">TOTVS Protheus &mdash; Fiscal</span><span class="pill">Contábil</span><span class="pill">Compras</span><span class="pill">Faturamento</span><span class="pill">NF-e</span><span class="pill">SPED</span><span class="pill">TSS</span><span class="pill">SAP SD</span></div></dd>
+      <dt>Dados</dt>
+      <dd><div class="pills"><span class="pill">SQL Server</span><span class="pill">MySQL</span><span class="pill">Queries &amp; Joins</span><span class="pill">Stored Procedures</span><span class="pill">Triggers</span><span class="pill">Modelagem</span></div></dd>
+      <dt>Processos</dt>
+      <dd><div class="pills"><span class="pill">Vendas</span><span class="pill">Distribuição</span><span class="pill">Supply chain</span><span class="pill">Faturamento</span><span class="pill">Logística</span><span class="pill">Mapeamento de processos</span></div></dd>
+      <dt>Fiscal / Contábil</dt>
+      <dd><div class="pills"><span class="pill">NF-e</span><span class="pill">SPED Fiscal e Contábil</span><span class="pill">Motor de Tributos</span><span class="pill">Obrigações acessórias</span></div></dd>
+      <dt>Ferramentas</dt>
+      <dd><div class="pills"><span class="pill">Pacote Office</span><span class="pill">WebServices (SOAP/REST)</span><span class="pill">Smart Schedule</span><span class="pill">Configurador TOTVS</span><span class="pill">ADVPL</span></div></dd>
+    </dl>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <p class="eyebrow">Experiência profissional</p>
+    <h2>Trajetória</h2>
+    <div class="legend" aria-hidden="true">
+      <span class="l-sys"><i></i>Tecnologia / ERP</span>
+      <span class="l-ops"><i></i>Operações / Negócio</span>
+    </div>
+    <ol class="tl">
+      <li class="tech">
+        <span class="when">2008 &ndash; 2011</span>
+        <h3>Analista de Suporte Backoffice &mdash; ERP TOTVS Protheus</h3>
+        <p class="org">Focus Consultoria &amp; Outsourcing</p>
+        <ul>
+          <li>Analista de testes e suporte pós-go-live em projetos SPED (NF-e, Fiscal e Contábil) e de automação comercial, em clientes de médio e grande porte &mdash; Gomes da Costa (atual Nauterra), Sancor do Brasil, Zoomp, Singulare Tubos e Galerias, Murrelektronik, Hilti do Brasil, Mtel e Fischer do Brasil</li>
+          <li>Configuração de WebServices via TSS (TOTVS Secure Store) para comunicação eletrônica com a SEFAZ em todos os projetos fiscais</li>
+          <li>Virada completa de versão do TOTVS Protheus (v8 para v10) no cliente Sancor do Brasil</li>
+          <li>Parametrização fiscal completa: Motor de Tributos, TES (Tipo de Entrada e Saída), CFOP (Código Fiscal de Operações e Prestações), cenários fiscais, ambientes Produção/Homologação, patches e atualizações de versão</li>
+          <li>Automação comercial e Portal Logístico: integração Weblayer × Protheus, mapeamento de melhorias e sustentação contínua</li>
+          <li>Análise e manipulação de dados SQL: consultas, criação de tabelas, campos, triggers e agendamento de jobs via Smart Schedule</li>
+        </ul>
+      </li>
+      <li>
+        <span class="when">2014 &ndash; 2024</span>
+        <h3>Analista de Operações e Backoffice</h3>
+        <p class="org">Agrifrut Comércio Importação e Exportação</p>
+        <ul>
+          <li>Gestão de central de compras com distribuição SP&ndash;Boa Vista: pedidos, cotações, compras, armazenagem e expedição</li>
+          <li>Controle de qualidade, manifesto de carga, seguro e conformidade documental de cargas mistas nacionais e importadas</li>
+          <li>Interface com transportadoras, clientes e fornecedores &mdash; incluindo atendimento a navios de passageiros</li>
+          <li>Emissão e conferência de Notas Fiscais, auditoria documental e mapeamento de processos</li>
+        </ul>
+      </li>
+      <li>
+        <span class="when">2020 &ndash; 2025</span>
+        <h3>Proprietário e Gestor Operacional</h3>
+        <p class="org">All Black Detalhamento Automotivo</p>
+        <ul>
+          <li>Gestão completa do negócio: atendimento, compras, controle de qualidade e liderança de equipe</li>
+        </ul>
+      </li>
+      <li>
+        <span class="when">1994 &ndash; 2014</span>
+        <h3>Trajetória anterior em operações e logística</h3>
+        <p class="org">Bonzão Hortifrut &middot; Agrifrut &middot; AML Hortifruti</p>
+        <ul>
+          <li>Gerente de Operações &mdash; Bonzão Hortifrut (2011&ndash;2014)</li>
+          <li>Especialista em Operações e Logística &mdash; Agrifrut (1999&ndash;2008)</li>
+          <li>Auxiliar Operacional &mdash; AML Hortifruti (1994&ndash;1999)</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="formacao">
+  <div class="wrap">
+    <p class="eyebrow">Formação e certificações &mdash; visão completa</p>
+    <h2>Aprendizado contínuo</h2>
+
+    <p class="subhead" style="margin-top:0">Formação acadêmica</p>
+    <div class="certs">
+      <div class="cert hl"><b>Tecnólogo em Gestão de Dados <em>(em andamento)</em></b><span class="yr">2025&ndash;2027</span><span class="inst">Universidade Federal do Piauí &mdash; UFPI/CEAD (Centro de Educação Aberta e a Distância)</span></div>
+    </div>
+
+    <p class="subhead">SAP</p>
+    <div class="certs">
+      <div class="cert hl"><b>SAP Certified Associate &mdash; SAP S/4HANA Cloud Private Edition, Sales (C_TS462)</b><span class="yr">2026</span><span class="inst">SAP &middot; certificação oficial, formato prático SyBA &middot; <a href="https://www.credly.com/badges/d537e371-6099-4c21-922c-33d146145acd" target="_blank" rel="noopener">verificar</a></span></div>
+      <div class="cert"><b>Introducing RISE with SAP Methodology &mdash; Badge oficial SAP</b><span class="yr">2026</span><span class="inst">SAP Learning &middot; <a href="https://badger.learning.sap.com/verify/xinot-bosuh-cebuv-ryryt-libol" target="_blank" rel="noopener">verificar</a></span></div>
+      <div class="cert"><b>Academia SAP SD (120h) &mdash; módulo Sales &amp; Distribution</b><span class="yr">2007</span><span class="inst">KA Solution</span></div>
+    </div>
+
+    <p class="subhead">Educação TOTVS</p>
+    <div class="certs">
+      <div class="cert"><b>Contabilidade Gerencial &mdash; Linha Protheus (45h32)</b><span class="yr">2026</span><span class="inst">Universidade TOTVS &middot; <a href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjExMTQ0MTUwfQ==" target="_blank" rel="noopener">verificar</a></span></div>
+      <div class="cert"><b>Configurador &mdash; Linha Protheus (3h44)</b><span class="yr">2025</span><span class="inst">Universidade TOTVS &middot; <a href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjEwMjAwNjEzfQ==" target="_blank" rel="noopener">verificar</a></span></div>
+      <div class="cert"><b>Configurador de Tributos v12.1.2410 (2h27)</b><span class="yr">2025</span><span class="inst">Universidade TOTVS &middot; <a href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjEwMTIzMDEyfQ==" target="_blank" rel="noopener">verificar</a></span></div>
+      <div class="cert"><b>Configurador v12.1.2410 (2h09)</b><span class="yr">2025</span><span class="inst">Universidade TOTVS &middot; <a href="https://educacao.totvs.com/#/certificate-authenticity/eyJpZEVucm9sbG1lbnQiOjk5ODEzMDN9" target="_blank" rel="noopener">verificar</a></span></div>
+    </div>
+
+    <p class="subhead">Fundação Bradesco / Microsoft</p>
+    <div class="certs">
+      <div class="cert"><b>AI-900 &mdash; Fundamentos de IA no Azure (16h)</b><span class="yr">2026</span><span class="inst">Fundação Bradesco / Microsoft</span></div>
+      <div class="cert"><b>Administrando (15h) &middot; Implementando (15h) &middot; Modelagem de Banco de Dados (8h)</b><span class="yr">2026</span><span class="inst">Fundação Bradesco</span></div>
+      <div class="cert"><b>Fluência em Inteligência Artificial (4h) &middot; LGPD (Lei Geral de Proteção de Dados, 2h)</b><span class="yr">2026</span><span class="inst">Fundação Bradesco</span></div>
+    </div>
+
+    <p class="subhead">Desenvolvimento</p>
+    <div class="certs">
+      <div class="cert"><b>Programador ADVPL (Advanced Protheus Language) Plus I &middot; SPED ADVPL Plus I</b><span class="yr">2009</span><span class="inst">ADVPL Treinamentos</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a class="btn primary" href="https://www.linkedin.com/in/alexandreferreiramoura" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:alexandrefmoura@gmail.com">alexandrefmoura@gmail.com</a>
+      <a class="btn" href="https://github.com/alexandreferreiramoura" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#certificacoes">Validações</a>
+    </div>
+    <p class="fine">Alexandre Ferreira Moura &middot; São Paulo e Região &middot; atualizado em agosto/2026</p>
+  </div>
+</footer>
+
 </body>
 </html>
