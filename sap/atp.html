@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S46051 — Acordos-Quadro · Alexandre Ferreira Moura</title>
+<title>S46001/ATP — Verificação de Disponibilidade · Alexandre Ferreira Moura</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,8 +29,6 @@ section+section{margin-top:44px}
 ul{list-style:none}
 ul.fez li{position:relative;padding:0 0 14px 30px}
 ul.fez li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--sys)}
-ul.apr li{position:relative;padding:0 0 14px 30px;color:var(--ink-soft)}
-ul.apr li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:2px;background:var(--ops)}
 .navdocs{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.8rem}
 footer{border-top:1px solid var(--line);padding:30px 0 60px}
 footer .wrap{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
@@ -43,14 +41,19 @@ footer .wrap{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft)}
 </div></div>
 <div class="pagehead"><div class="wrap">
   <p class="eyebrow">Experiência prática · SAP S/4HANA 2025 · Certificação C_TS462</p>
-  <h1>S46051 — Acordos-Quadro</h1>
-  <p class="sub">4 exercícios · Contratos de quantidade, valor e locação</p>
+  <h1>S46001/ATP — Verificação de Disponibilidade</h1>
+  <p class="sub">ATP (Available to Promise) &middot; confirmação de estoque no ciclo de vendas</p>
 </div></div>
 <article><div class="wrap">
-  <p class="intro">Gestão de contratos de longo prazo em SD: como o sistema controla saldos, vincula pedidos de liberação e se comporta quando o contrato se esgota.</p>
+  <p class="intro">Módulo sobre a verificação de disponibilidade (ATP) no ciclo de vendas, incluindo a diferença entre o método básico e o avançado (aATP — Advanced Available to Promise).</p>
   <section>
     <h2>Tarefas realizadas</h2>
-    <ul class="fez"><li>Execução do ciclo de pré-venda com referência encadeada (Inquiry → Quotation → pedidos parciais)</li><li>Criação de contrato por quantidade com desconto associado, vinculação de múltiplos pedidos de liberação e teste do comportamento com pedidos fora do contrato e após o esgotamento do saldo</li><li>Criação de contrato de valor com módulo de sortimento (materiais elegíveis) e acompanhamento da liberação acumulada até o teto</li><li>Criação de contrato de locação com perfil de contrato automático</li></ul>
+    <ul class="fez">
+      <li>Consulta e confirmação de disponibilidade (ATP) para material em pedido de venda, com verificação das quantidades confirmadas nas linhas de programação (schedule lines)</li>
+      <li>Análise do escopo de verificação de disponibilidade (Scope of Availability Check): estoque considerado, requisitos, fornecimento futuro e horizonte de verificação</li>
+      <li>Consulta ao histórico de verificação de disponibilidade via CO09</li>
+      <li>Comparação entre os métodos ATP básico e aATP por edição do S/4HANA (Cloud Public, Cloud Private e on-premise)</li>
+    </ul>
   </section>
   <div class="navdocs">
     <a href="index.html">← todos os módulos</a>
